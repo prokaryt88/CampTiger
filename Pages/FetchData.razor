@@ -1,0 +1,46 @@
+﻿@page "/FetchData"
+@using CampTiger.Models
+@using CampTiger.Data
+@inject UserService userService
+
+<h1>Users</h1>
+
+<p>This component demonstrates managing user data.</p>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>UserID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in users)
+            {
+            <tr>
+                <td>@item.Id</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@functions {
+    List<User> users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await userService.GetUsersAsync();
+    }
+}
