@@ -165,7 +165,6 @@ C:\Users\Alex\Documents\GitHub\CampTiger\bin\Debug\netcoreapp3.1\runtimes\win\li
 C:\Users\Alex\Documents\GitHub\CampTiger\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Alex\Documents\GitHub\CampTiger\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Alex\Documents\GitHub\CampTiger\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.csprojAssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.csproj.CoreCompileInputs.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.MvcApplicationPartsAssemblyInfo.cache
@@ -210,3 +209,5 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\staticwebassets
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.dll
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.pdb
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.genruntimeconfig.cache
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Groups.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Groups.razor.g.cs

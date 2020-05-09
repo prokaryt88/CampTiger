@@ -1,0 +1,153 @@
+﻿@page "/GroupManagement"
+@using CampTiger.Models
+@using CampTiger.Data
+
+@inject GroupService groupService
+
+<h1> Group Management </h1>
+<p> Manage Group data.</p>
+
+        @if (groups == null)
+        {
+            <p><em> Loading...</em></p>
+        }
+        else
+        {
+            <button @onclick="@Add" class="btn btn-success">Add</button>
+            <table class='table table-hover'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Leader</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in groups)
+                    {
+                        <tr @onclick="@(() => Show(item.GroupId))">
+                            <td>@item.GroupId</td>
+                            <td>@item.Leader</td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        @if (groups != null && mode == MODE.Add) // Insert form
+        {
+            <label> Group ID:</label><br>
+            <input placeholder="Group Id" @bind="@groupId" /><br />
+            <label> Leader:</label><br>
+            <input placeholder="Leader" @bind="@leader" /><br />
+            <label> Name:</label><br>
+            <input placeholder="Name" @bind="@name" /><br />
+            <label> Description:</label><br>
+            <input placeholder="Description" @bind="@description" /><br />
+            <button @onclick="@Insert" class="btn btn-warning">Insert</button>
+        }
+        @if (groups != null && mode == MODE.EditDelete) // Update & Delete form
+        {
+            <label> Group ID:</label><br>
+            <input placeholder="Group Id" @bind="@groupId" /><br />
+            <label> Leader:</label><br>
+            <input placeholder="Leader" @bind="@leader" /><br />
+            <label> Name:</label><br>
+            <input placeholder="Name" @bind="@name" /><br />
+            <label> Description:</label><br>
+            <input placeholder="Description" @bind="@description" /><br />
+            <button @onclick="@Update" class="btn btn-primary">Update</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button @onclick="@Delete" class="btn btn-danger">Delete</button>
+        }
+
+
+@code {
+
+    List<Group> groups;
+    string groupId;
+    string leader;
+    string name;
+    string description;
+    private enum MODE { None, Add, EditDelete };
+    MODE mode = MODE.None;
+    Group group;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        groups = await groupService.GetGroupAsync();
+    }
+
+    protected async Task Insert()
+    {
+
+        Group g = new Group()
+        {
+            GroupId = groupId,
+            Leader = leader,
+            Name = name,
+            Description = description
+        };
+
+        await groupService.InsertGroupAsync(g);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected void ClearFields()
+    {
+
+
+        groupId = string.Empty;
+        leader = string.Empty;
+        name = string.Empty;
+        description = string.Empty;
+    }
+    protected void Add()
+    {
+        ClearFields();
+        mode = MODE.Add;
+    }
+    protected async Task Update()
+    {
+
+        Group g = new Group()
+        {
+            GroupId = groupId,
+            Leader = leader,
+            Name = name,
+            Description = description
+        };
+
+        await groupService.UpdateGroupAsync(groupId, g);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected async Task Delete()
+    {
+        await groupService.DeleteGroupAsync(groupId);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+    protected async Task Show(string id)
+    {
+        group = await groupService.GetGroupByIdAsync(id);
+        groupId = group.GroupId;
+        leader = group.Leader;
+        description = group.Description;
+        name = group.Name;
+        mode = MODE.EditDelete;
+    }
+}
+

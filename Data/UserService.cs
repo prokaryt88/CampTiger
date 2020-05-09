@@ -9,14 +9,15 @@ namespace CampTiger.Data
     public class UserService
     {
         CampDbContext _context;
+        
         public UserService(CampDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<User>> GetUsersAsync()
+        public async Task<List<User>> GetUserAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.User.ToListAsync();
         }
     }
 }
