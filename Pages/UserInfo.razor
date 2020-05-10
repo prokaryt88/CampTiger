@@ -1,4 +1,5 @@
-﻿@using CampTiger.Data
+﻿@page "/UseInfo"
+@using CampTiger.Data
 @using CampTiger.Models
 @inject AspNetUsersService userService
 
@@ -21,14 +22,13 @@
     <br>
     <input placeholder="State" @bind="@state" />
     <br />
-    <label> Phone:</label>
-    <br>
-    <input placeholder="Phone" @bind="@phone" />
-    <br />
     <label> Zip:</label>
     <br>
     <input placeholder="Zip" @bind="@zip" />
     <br />
+    <label> Phone:</label>
+    <br>
+    <input placeholder="Phone" @bind="@phone" />
     <br />
     <button @onclick="@Insert" class="btn btn-warning">Insert</button>
 }

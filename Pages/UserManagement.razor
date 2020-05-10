@@ -2,7 +2,7 @@
 @using CampTiger.Models
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
-@using System.Security.Claims 
+@using System.Security.Claims
 
 @inject AspNetUsersService userService
 
@@ -50,7 +50,7 @@ else
     <br />
     <label> Last Name:</label>
     <br>
-    <input placeholder="Name" @bind="@lastName" />
+    <input placeholder="Last Name" @bind="@lastName" />
     <br />
     <label> Address:</label>
     <br>
@@ -60,13 +60,13 @@ else
     <br>
     <input placeholder="State" @bind="@state" />
     <br />
-    <label> Phone:</label>
-    <br>
-    <input placeholder="Phone" @bind="@phone" />
-    <br />
     <label> Zip:</label>
     <br>
     <input placeholder="Zip" @bind="@zip" />
+    <br />
+    <label> Phone:</label>
+    <br>
+    <input placeholder="Phone" @bind="@phone" />
     <br />
     <button @onclick="@Update" class="btn btn-primary">Update</button>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>

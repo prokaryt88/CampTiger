@@ -39,7 +39,6 @@ namespace CampTiger.Data
             if (AspNetUsers == null)
                 return null;
 
-            AspNetUsers.Id = u.Id;
             AspNetUsers.FirstName = u.FirstName;
             AspNetUsers.LastName = u.LastName;
             AspNetUsers.Address = u.Address;
