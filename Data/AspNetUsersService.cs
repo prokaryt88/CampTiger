@@ -3,13 +3,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using CampTiger.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CampTiger.Data
 {
     public class AspNetUsersService
     {
         CampDbContext _context;
-        
+
         public AspNetUsersService(CampDbContext context)
         {
             _context = context;
@@ -66,6 +68,11 @@ namespace CampTiger.Data
         private bool AspNetUsersExists(string id)
         {
             return _context.AspNetUsers.Any(e => e.Id == id);
+        }
+
+        public bool AspNetUsersExistsEmail(string email)
+        {
+            return _context.AspNetUsers.Any(e => e.Email == email);
         }
     }
 }

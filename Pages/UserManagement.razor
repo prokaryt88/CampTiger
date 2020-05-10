@@ -4,6 +4,9 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 
+@inject UserManager<IdentityUser> _UserManager
+@inject RoleManager<IdentityRole> _RoleManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AspNetUsersService userService
 
 <h1> User Management </h1>
@@ -15,9 +18,59 @@
 }
 else
 {
+    <button class="btn btn-success" @onclick="AddNewUser">Add User</button>
+    @if (ShowPopup)
+    {
+        <!-- This is the popup to create or edit a user -->
+        <div class="modal" tabindex="-1" style="display:block" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Add User</h3>
+                        <!-- Button to close the popup -->
+                        <button type="button" class="close"
+                                @onclick="ClosePopup">
+                            <span aria-hidden="true">X</span>
+                        </button>
+                    </div>
+                    <!-- Edit form for the current user -->
+                    <div class="modal-body">
+                        <input class="form-control" type="text"
+                               placeholder="Email"
+                               @bind="objUser.Email" />
+                        <input class="form-control" type="password"
+                               placeholder="Password"
+                               @bind="objUser.PasswordHash" />
+                        <select class="form-control"
+                                @bind="@CurrentUserRole">
+
+                            @foreach (var option in Options)
+                            {
+                                <option value="@option">
+                                    @option
+                                </option>
+                            }
+                        </select>
+                        <br /><br />
+                        <!-- Button to save the user -->
+                        <button class="btn btn-primary"
+                                @onclick="SaveUser">
+                            Save
+                        </button>
+
+                        <br />
+                        <span style="color:red">@strError</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <table class='table table-hover'>
         <thead>
             <tr>
+                <th>EMail</th>
+                <th>Permissions</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
@@ -30,6 +83,8 @@ else
             @foreach (var item in Users)
             {
                 <tr @onclick="@(() => Show(item.Id))">
+                    <td>@item.Email</td>
+                    <td>@_RoleManager.FindByIdAsync(item.Id)</td>
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Address</td>
@@ -68,6 +123,19 @@ else
     <br>
     <input placeholder="Phone" @bind="@phone" />
     <br />
+    <label> Permissions: </label>
+    <br>
+    <select class="form-control"
+            @bind="@CurrentUserRole">
+
+        @foreach (var option in Options)
+        {
+            <option value="@option">
+                @option
+            </option>
+        }
+    </select>
+    <br />
     <button @onclick="@Update" class="btn btn-primary">Update</button>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <button @onclick="@Delete" class="btn btn-danger">Delete</button>
@@ -78,6 +146,7 @@ else
 
     List<AspNetUsers> Users;
     string userId;
+    string permissions;
     string firstName;
     string lastName;
     string address;
@@ -87,6 +156,11 @@ else
     private enum MODE { None, Add, EditDelete };
     MODE mode = MODE.None;
     AspNetUsers User;
+    bool ShowPopup = false;
+    IdentityUser objUser = new IdentityUser();
+    string CurrentUserRole { get; set; } = "User";
+    List<string> Options = new List<string>() { "User", "Group Leader", "Admin" };
+    string strError = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,6 +169,7 @@ else
 
     protected async Task load()
     {
+
         Users = await userService.GetAspNetUsersAsync();
     }
 
@@ -106,6 +181,33 @@ else
         state = string.Empty;
         zip = string.Empty;
         phone = string.Empty;
+    }
+
+    protected async Task AddNewUser()
+    {
+        ShowPopup = true;
+        objUser = new IdentityUser();
+
+    }
+
+    async Task SaveUser()
+
+    {
+        var NewUser = new IdentityUser
+        {
+            UserName = objUser.Email,
+            Email = objUser.Email
+        };
+
+        if (!userService.AspNetUsersExistsEmail(NewUser.Email))
+        {
+            var CreateResult = await _UserManager.CreateAsync(NewUser, objUser.PasswordHash);
+
+            await _UserManager.AddToRoleAsync(NewUser, CurrentUserRole);
+
+            ShowPopup = false;
+            Users = await userService.GetAspNetUsersAsync();
+        }
     }
 
     protected async Task Update()
@@ -146,6 +248,11 @@ else
         zip = User.Zip;
         phone = User.Phone;
         mode = MODE.EditDelete;
+    }
+
+    void ClosePopup()
+    {
+        ShowPopup = false;
     }
 }
 
