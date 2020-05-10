@@ -209,5 +209,10 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\staticwebassets
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.dll
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.pdb
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.genruntimeconfig.cache
-C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Groups.razor.g.cs
-C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Groups.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GroupManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UserManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\EventManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\EventManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\GroupManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UserManagement.razor.g.cs

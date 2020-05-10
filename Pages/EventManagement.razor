@@ -1,0 +1,213 @@
+﻿@page "/EventManagement"
+@using CampTiger.Models
+@using CampTiger.Data
+@inject EventService eventService
+<h1> Event Records</h1>
+<p>Create, Read, Edit, and Delete Event records.</p>
+@if (events == null)
+{
+<p><em> Loading...</em></p>
+}
+else
+{
+<button @onclick="@Add" class="btn btn-success">Add</button>
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>GrID</th>
+            <th>Name</th>
+            <th>Leader</th>
+            <th>Details</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in events)
+        {
+<tr @onclick="@(() => Show(item.EventId))">
+    <td>@item.EventId</td>
+    <td>@item.Group</td>
+    <td>@item.Name</td>
+    <td>@item.Leader</td>
+    <td>@item.Description</td>
+    <td>@item.Date</td>
+    <td>@item.Time</td>
+    <td>@item.Capacity</td>
+</tr>
+}
+    </tbody>
+</table>
+
+}
+@if (events != null && mode == MODE.Add)
+{
+
+<label>EventId: </label>
+<br />
+<input plachehold="Event ID" @bind="@eventId" />
+<br />
+<label>Group: </label>
+<br />
+<input plachehold="Group ID" @bind="@Group" />
+<br />
+<label>EventName: </label>
+<br />
+<input plachehold="Name" @bind="@name" />
+<br />
+<label>Leader: </label>
+<br />
+<input plachehold="Leader" @bind="@leader" />
+<br />
+<label>Description: </label>
+<br />
+<input plachehold="Details" @bind="@description" />
+<br />
+<label>Location: </label>
+<br />
+<input plachehold="Date" @bind="@date" />
+<br />
+<label>Time: </label>
+<br />
+<input plachehold="Time" @bind="@time" />
+<br />
+<label>Capacity: </label>
+<br />
+<input plachehold="Details" @bind="@capacity" />
+<br />
+<button @onclick="@Insert" class="btn btn-warning">Insert</button>
+}
+@if (events != null && mode == MODE.EditDelete) // Update & Delete form
+{
+
+
+<input type="hidden" @bind="@eventId" />
+<br />
+<input type="hidden" @bind="@Group" />
+<br />
+<label>EventName: </label>
+<br />
+<input plachehold="Name" @bind="@name" />
+<br />
+<label>Leader: </label>
+<br />
+<input plachehold="Leader" @bind="@leader" />
+<br />
+<label>Description: </label>
+<br />
+<input plachehold="Details" @bind="@description" />
+<br />
+<label>Location: </label>
+<br />
+<input plachehold="Date" @bind="@date" />
+<br />
+<label>Time: </label>
+<br />
+<input plachehold="Time" @bind="@time" />
+<br />
+<label>Capacity: </label>
+<br />
+<input plachehold="Details" @bind="@capacity" />
+<br />
+<button @onclick="@Update" class="btn btn-primary">Update</button>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<button @onclick="@Delete" class="btn btn-danger">Delete</button>
+}
+@functions{
+    List<Event> events;
+    string eventId;
+    string leader;
+    string Group;
+    string name;
+    string description;
+    string date;
+    string time;
+    string capacity;
+    private enum MODE { None, Add, EditDelete };
+    MODE mode = MODE.None;
+    Event activity;
+    protected async Task Insert()
+    {
+        Event e = new Event()
+        {
+            EventId = eventId,
+            Group = Group,
+            Name = name,
+            Leader = leader,
+            Description = description,
+            Date = date,
+            Time = time,
+            Capacity = capacity
+        };
+        await eventService.InsertEventAsync(e);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+    protected void Add()
+    {
+        ClearFields();
+        mode = MODE.Add;
+    }
+    protected void ClearFields()
+    {
+        eventId = string.Empty;
+        Group = string.Empty;
+        name = string.Empty;
+        description = string.Empty;
+        date = string.Empty;
+        time = string.Empty;
+        capacity = string.Empty;
+    }
+    protected async Task Update()
+    {
+        Event ev = new Event()
+        {
+            EventId = eventId,
+            Group = Group,
+            Name = name,
+            Leader = leader,
+            Description = description,
+            Date = date,
+            Time = time,
+            Capacity = capacity
+        };
+
+        await eventService.UpdateEventAsynC(eventId, ev);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected async Task Delete()
+    {
+        await eventService.DeleteEventAsync(eventId);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+    protected async Task Show(string id)
+    {
+        activity = await eventService.GetEventByIdAsync(id);
+        eventId = activity.EventId;
+        Group = activity.Group;
+        leader = activity.Leader;
+        name = activity.Name;
+        description = activity.Description;
+        date = activity.Date;
+        time = activity.Time;
+        capacity = activity.Capacity;
+        mode = MODE.EditDelete;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+    protected async Task load()
+    {
+        events = await eventService.GetEventsAsync();
+    }
+}

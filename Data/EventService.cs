@@ -37,9 +37,8 @@ namespace CampTiger.Data
                 return null;
             even.EventId = e.EventId;
             even.Leader = e.Leader;
-            even.GroupId = e.GroupId;
+            even.Group = e.Group;
             even.Name = e.Name;
-            even.Location = e.Location;
             even.Description = e.Description;
             even.Date = e.Date;
             even.Time = e.Time;

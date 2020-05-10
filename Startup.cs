@@ -44,6 +44,7 @@ namespace CampTiger
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddScoped<UserService>();
             services.AddScoped<GroupService>();
+            services.AddScoped<EventService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

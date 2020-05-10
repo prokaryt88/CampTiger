@@ -1,0 +1,153 @@
+﻿@page "/UserManagement"
+@using CampTiger.Models
+@using CampTiger.Data
+
+@inject UserService userService
+
+<h1> User Management </h1>
+<p> Manage User data.</p>
+
+@if (Users == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Users)
+            {
+                <tr @onclick="@(() => Show(item.UserId))">
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Address</td>
+                    <td>@item.State</td>
+                    <td>@item.Zip</td>
+                    <td>@item.Phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (Users != null && mode == MODE.EditDelete) // Update & Delete form
+{
+    <label> First Name:</label>
+    <br>
+    <input placeholder="First Name" @bind="@firstName" />
+    <br />
+    <label> Last Name:</label>
+    <br>
+    <input placeholder="Name" @bind="@lastName" />
+    <br />
+    <label> Address:</label>
+    <br>
+    <input placeholder="Address" @bind="@address" />
+    <br />
+    <label> State:</label>
+    <br>
+    <input placeholder="State" @bind="@state" />
+    <br />
+    <label> Phone:</label>
+    <br>
+    <input placeholder="Phone" @bind="@phone" />
+    <br />
+    <label> Zip:</label>
+    <br>
+    <input placeholder="Zip" @bind="@zip" />
+    <br />
+    <button @onclick="@Update" class="btn btn-primary">Update</button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button @onclick="@Delete" class="btn btn-danger">Delete</button>
+}
+
+
+@code {
+
+    List<User> Users;
+    string userId;
+    string firstName;
+    string lastName;
+    string address;
+    string state;
+    string zip;
+    string phone;
+    private enum MODE { None, Add, EditDelete };
+    MODE mode = MODE.None;
+    User User;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        Users = await userService.GetUserAsync();
+    }
+
+    protected void ClearFields()
+    {
+        firstName = string.Empty;
+        lastName = string.Empty;
+        address = string.Empty;
+        state = string.Empty;
+        zip = string.Empty;
+        phone = string.Empty;
+    }
+    protected void Add()
+    {
+        ClearFields();
+        mode = MODE.Add;
+    }
+
+    protected async Task Update()
+    {
+
+        User g = new User()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Address = address,
+            State = state,
+            Zip = zip,
+            Phone = phone
+        };
+
+        await userService.UpdateUserAsync(g.UserId, g);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected async Task Delete()
+    {
+        await userService.DeleteUserAsync(userId);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+    protected async Task Show(string id)
+    {
+        User = await userService.GetUserByIdAsync(id);
+        userId = User.UserId;
+        firstName = User.FirstName;
+        lastName = User.LastName;
+        address = User.Address;
+        state = User.State;
+        zip = User.Zip;
+        phone = User.Phone;
+        mode = MODE.EditDelete;
+    }
+}
+
