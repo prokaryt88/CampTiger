@@ -1,8 +1,10 @@
 ﻿@page "/UserManagement"
 @using CampTiger.Models
 @using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims 
 
-@inject UserService userService
+@inject AspNetUsersService userService
 
 <h1> User Management </h1>
 <p> Manage User data.</p>
@@ -27,7 +29,7 @@ else
         <tbody>
             @foreach (var item in Users)
             {
-                <tr @onclick="@(() => Show(item.UserId))">
+                <tr @onclick="@(() => Show(item.Id))">
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Address</td>
@@ -74,7 +76,7 @@ else
 
 @code {
 
-    List<User> Users;
+    List<AspNetUsers> Users;
     string userId;
     string firstName;
     string lastName;
@@ -84,7 +86,7 @@ else
     string phone;
     private enum MODE { None, Add, EditDelete };
     MODE mode = MODE.None;
-    User User;
+    AspNetUsers User;
 
     protected override async Task OnInitializedAsync()
     {
@@ -93,7 +95,7 @@ else
 
     protected async Task load()
     {
-        Users = await userService.GetUserAsync();
+        Users = await userService.GetAspNetUsersAsync();
     }
 
     protected void ClearFields()
@@ -105,16 +107,11 @@ else
         zip = string.Empty;
         phone = string.Empty;
     }
-    protected void Add()
-    {
-        ClearFields();
-        mode = MODE.Add;
-    }
 
     protected async Task Update()
     {
 
-        User g = new User()
+        AspNetUsers u = new AspNetUsers()
         {
             FirstName = firstName,
             LastName = lastName,
@@ -124,7 +121,7 @@ else
             Phone = phone
         };
 
-        await userService.UpdateUserAsync(g.UserId, g);
+        await userService.UpdateAspNetUsersAsync(userId, u);
         ClearFields();
         await load();
         mode = MODE.None;
@@ -132,15 +129,16 @@ else
 
     protected async Task Delete()
     {
-        await userService.DeleteUserAsync(userId);
+        await userService.DeleteAspNetUsersAsync(userId);
         ClearFields();
         await load();
         mode = MODE.None;
     }
+
     protected async Task Show(string id)
     {
-        User = await userService.GetUserByIdAsync(id);
-        userId = User.UserId;
+        User = await userService.GetAspNetUsersByIdAsync(id);
+        userId = User.Id;
         firstName = User.FirstName;
         lastName = User.LastName;
         address = User.Address;

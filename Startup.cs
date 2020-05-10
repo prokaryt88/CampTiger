@@ -33,18 +33,20 @@ namespace CampTiger
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("AuthConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<CampDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("CampConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-            services.AddScoped<UserService>();
+            services.AddScoped<AspNetUsersService>();
             services.AddScoped<GroupService>();
             services.AddScoped<EventService>();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

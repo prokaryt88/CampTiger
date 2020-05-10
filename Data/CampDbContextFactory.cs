@@ -9,7 +9,7 @@ namespace CampTiger.Models
         public CampDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<CampDbContext>();
-            var connStr = ConfigurationHelper.GetCurrentSettings("ConnectionStrings:CampConnection");
+            var connStr = ConfigurationHelper.GetCurrentSettings("ConnectionStrings:DefaultConnection");
             optionsBuilder.UseSqlServer(connStr);
             return new CampDbContext(optionsBuilder.Options);
         }

@@ -1,7 +1,7 @@
 ﻿@page "/FetchData"
 @using CampTiger.Models
 @using CampTiger.Data
-@inject UserService userService
+@inject AspNetUsersService userService
 
 <h1>Users</h1>
 
@@ -23,7 +23,7 @@ else
             @foreach (var item in users)
             {
             <tr>
-                <td>@item.UserId</td>
+                <td>@item.Id</td>
             </tr>
             }
         </tbody>
@@ -32,7 +32,7 @@ else
 
 
 @functions {
-    List<User> users;
+    List<AspNetUsers> users;
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,6 +41,6 @@ else
 
     protected async Task load()
     {
-        users = await userService.GetUserAsync();
+        users = await userService.GetAspNetUsersAsync();
     }
 }

@@ -170,7 +170,6 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.MvcAp
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.RazorComponent.input.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
-C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Error.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
@@ -184,7 +183,6 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.TagHe
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.TagHelpers.output.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\CampTiger.RazorCoreGenerate.cache
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
-C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Error.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\FetchData.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
@@ -216,3 +214,5 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaratio
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\EventManagement.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\GroupManagement.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UserManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UserInfo.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UserInfo.razor.g.cs

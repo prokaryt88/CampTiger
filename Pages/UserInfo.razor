@@ -1,0 +1,65 @@
+﻿@using CampTiger.Data
+@using CampTiger.Models
+@inject AspNetUsersService userService
+
+<h1>UserInfo</h1>
+@if (Users != null && mode == MODE.Add) // Insert form
+{
+    <label> First Name:</label>
+    <br>
+    <input placeholder="First Name" @bind="@firstName" />
+    <br />
+    <label> Last Name:</label>
+    <br>
+    <input placeholder="Name" @bind="@lastName" />
+    <br />
+    <label> Address:</label>
+    <br>
+    <input placeholder="Address" @bind="@address" />
+    <br />
+    <label> State:</label>
+    <br>
+    <input placeholder="State" @bind="@state" />
+    <br />
+    <label> Phone:</label>
+    <br>
+    <input placeholder="Phone" @bind="@phone" />
+    <br />
+    <label> Zip:</label>
+    <br>
+    <input placeholder="Zip" @bind="@zip" />
+    <br />
+    <br />
+    <button @onclick="@Insert" class="btn btn-warning">Insert</button>
+}
+
+@code {
+    List<AspNetUsers> Users;
+    string firstName;
+    string lastName;
+    string address;
+    string state;
+    string zip;
+    string phone;
+    private enum MODE { None, Add, EditDelete };
+    MODE mode = MODE.None;
+    AspNetUsers User;
+
+    protected async Task Insert()
+    {
+
+        AspNetUsers u = new AspNetUsers()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Address = address,
+            State = state,
+            Zip = zip,
+            Phone = phone
+        };
+
+        await userService.InsertAspNetUsersAsync(u);
+
+        mode = MODE.None;
+    }
+}

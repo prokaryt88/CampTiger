@@ -4,5 +4,7 @@
     <RazorPage_SelectedScaffolderID>Microsoft.WebTools.Scaffolding.Core.ModelBasedCrudRazorPageScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/RazorPage</RazorPage_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
+    <_SelectedScaffolderID>Microsoft.WebTools.Scaffolding.Core.RazorPages.ModelBasedRazorPageScaffolder</_SelectedScaffolderID>
+    <_SelectedScaffolderCategoryPath>root/Common</_SelectedScaffolderCategoryPath>
   </PropertyGroup>
 </Project>
