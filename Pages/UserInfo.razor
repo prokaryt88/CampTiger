@@ -1,10 +1,60 @@
 ﻿@page "/UserInfo"
-@using CampTiger.Data
 @using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+
+@attribute [Authorize(Roles = "normal")]
+
+@inject UserManager<IdentityUser> _UserManager
+@inject RoleManager<IdentityRole> _RoleManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AspNetUsersService userService
 
-<h1>UserInfo</h1>
-@if (Users != null && mode == MODE.Add) // Insert form
+<h1> My Info </h1>
+<p> Manage My User Data.</p>
+
+@if (Users == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>EMail</th>
+                <th>Permissions</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Users)
+            {
+                @if (item.Id == userId)
+                {
+                    <tr @onclick="@(() => Show(item.Id))">
+                        <td>@item.Email</td>
+                        <td>@permissions</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Address</td>
+                        <td>@item.State</td>
+                        <td>@item.Zip</td>
+                        <td>@item.Phone</td>
+                    </tr>
+                }
+             }
+        </tbody>
+    </table>
+}
+
+@if (Users != null && mode == MODE.EditDelete) // Update & Delete form
 {
     <label> First Name:</label>
     <br>
@@ -12,7 +62,7 @@
     <br />
     <label> Last Name:</label>
     <br>
-    <input placeholder="Name" @bind="@lastName" />
+    <input placeholder="Last Name" @bind="@lastName" />
     <br />
     <label> Address:</label>
     <br>
@@ -30,11 +80,16 @@
     <br>
     <input placeholder="Phone" @bind="@phone" />
     <br />
-    <button @onclick="@Insert" class="btn btn-warning">Insert</button>
+    <button @onclick="@Update" class="btn btn-primary">Update</button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 }
 
+
 @code {
+
     List<AspNetUsers> Users;
+    string userId;
+    string permissions = "";
     string firstName;
     string lastName;
     string address;
@@ -44,8 +99,60 @@
     private enum MODE { None, Add, EditDelete };
     MODE mode = MODE.None;
     AspNetUsers User;
+    bool ShowPopup = false;
+    IdentityUser objUser = new IdentityUser();
 
-    protected async Task Insert()
+    string CurrentUserRole { get; set; } = "User";
+
+    List<string> Options = new List<string>() { "User", "Group Leader", "Admin" };
+    string strError = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+
+        Users = await userService.GetAspNetUsersAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await _UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+    }
+
+    protected void ClearFields()
+    {
+        firstName = string.Empty;
+        lastName = string.Empty;
+        address = string.Empty;
+        state = string.Empty;
+        zip = string.Empty;
+        phone = string.Empty;
+    }
+
+    async Task SaveUser()
+
+    {
+        var NewUser = new IdentityUser
+        {
+            UserName = objUser.Email,
+            Email = objUser.Email
+        };
+
+        if (!userService.AspNetUsersExistsEmail(NewUser.Email))
+        {
+            var CreateResult = await _UserManager.CreateAsync(NewUser, objUser.PasswordHash);
+
+            await _UserManager.AddToRoleAsync(NewUser, CurrentUserRole);
+
+            ShowPopup = false;
+            Users = await userService.GetAspNetUsersAsync();
+        }
+    }
+
+    protected async Task Update()
     {
 
         AspNetUsers u = new AspNetUsers()
@@ -58,8 +165,30 @@
             Phone = phone
         };
 
-        await userService.InsertAspNetUsersAsync(u);
+        await userService.UpdateAspNetUsersAsync(userId, u);
+        var change = await _UserManager.FindByIdAsync(userId);
 
+        ClearFields();
+        await load();
         mode = MODE.None;
     }
+
+    protected async Task Show(string id)
+    {
+        User = await userService.GetAspNetUsersByIdAsync(id);
+        userId = User.Id;
+        firstName = User.FirstName;
+        lastName = User.LastName;
+        address = User.Address;
+        state = User.State;
+        zip = User.Zip;
+        phone = User.Phone;
+        mode = MODE.EditDelete;
+    }
+
+    void ClosePopup()
+    {
+        ShowPopup = false;
+    }
 }
+

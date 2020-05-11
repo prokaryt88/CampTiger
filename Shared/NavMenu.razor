@@ -12,9 +12,14 @@
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </li>
-
-
-        <AuthorizeView Roles="admin, groupleader, normal">
+        <AuthorizeView Roles="normal, admin, groupleader">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="UserInfo">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Edit My Info
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <AuthorizeView Roles="normal">
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="GroupSignUp">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Group Sign Up
@@ -26,8 +31,8 @@
                 </NavLink>
             </li>
             <li class="nav-item px-3">
-                <NavLink class="nav-link" href="RequestManagement">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> Event Requests
+                <NavLink class="nav-link" href="UpcomingEvents">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Upcoming Events
                 </NavLink>
             </li>
         </AuthorizeView>
@@ -37,16 +42,21 @@
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Group Management
                 </NavLink>
             </li>
-        </AuthorizeView>
-        <AuthorizeView Roles="admin">
             <li class="nav-item px-3">
-                <NavLink class="nav-link" href="UserManagement">
-                    <span class="oi oi-plus" aria-hidden="true"></span> User Management
+                <NavLink class="nav-link" href="RequestManagement">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Event Requests
                 </NavLink>
             </li>
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="EventManagement">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Event Management
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <AuthorizeView Roles="admin">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="UserManagement">
+                    <span class="oi oi-plus" aria-hidden="true"></span> User Management
                 </NavLink>
             </li>
         </AuthorizeView>

@@ -1,0 +1,103 @@
+﻿@page "/UpcomingEvents"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AspNetUsersService userService
+@inject EventService eventService
+@inject UserEventService userEventService
+
+<h1>Users</h1>
+
+<p>This component demonstrates managing user data.</p>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>Your upcoming events</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var activity in records)
+            {
+                @if (activity.Approved == true & activity.UserId == userId)
+                {
+                    @foreach (var item in events)
+                    {
+                        @if (activity.EventId == item.EventId)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Date</td>
+                                <td>@item.Time</td>
+                            </tr>
+                        }
+                    }
+
+                }
+            }
+        </tbody>
+    </table>
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>Pending join requests</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var activity in records)
+            {
+                @if (activity.Approved == false & activity.UserId == userId)
+                {
+                    @foreach (var item in events)
+                    {
+                        @if (activity.EventId == item.EventId)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Date</td>
+                                <td>@item.Time</td>
+                            </tr>
+                        }
+                    }
+
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@functions {
+    List<AspNetUsers> users;
+    List<Event> events;
+    List<UserEvent> records;
+    String userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await userService.GetAspNetUsersAsync();
+        events = await eventService.GetEventsAsync();
+        records = await userEventService.GetUserEventAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+    }
+}
