@@ -70,7 +70,7 @@ else
         </div>
     }
 
-    <table class='table table-hover' id ="list">
+    <table class='table table-hover' id="list">
         <thead>
             <tr>
                 <th>EMail</th>
@@ -103,6 +103,8 @@ else
 
 @if (Users != null && mode == MODE.EditDelete) // Update & Delete form
 {
+    <label> User ID: @userId</label>
+    <br>
     <label> First Name:</label>
     <br>
     <input placeholder="First Name" @bind="@firstName" />
