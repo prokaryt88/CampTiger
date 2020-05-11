@@ -12,9 +12,21 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AspNetUsersService userService
 
+    <style>
+        #searchKey {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 17px;
+            padding: 13px 20px 13px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+    </style>
+
 <h1> User Management </h1>
 <p> Manage User data.</p>
-<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by email..." title="Type in a name">
+<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for Users by email..." title="Type in a name">
 <br>
 @if (Users == null)
 {
@@ -74,7 +86,6 @@ else
         <thead>
             <tr>
                 <th>EMail</th>
-                <th>Permissions</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
@@ -88,7 +99,6 @@ else
             {
                 <tr @onclick="@(() => Show(item.Id))">
                     <td>@item.Email</td>
-                    <td>@permissions</td>
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Address</td>

@@ -14,7 +14,7 @@
 
 <h1>Users</h1>
 
-<p>This component demonstrates managing user data.</p>
+<p>Your Upcoming Approved Events and Pending Requests</p>
 
 @if (users == null)
 {
@@ -43,6 +43,9 @@ else
                                 <td>@item.Name</td>
                                 <td>@item.Date</td>
                                 <td>@item.Time</td>
+                                <td>
+                                    <button class="btn btn-primary" @onclick="(() => Delete(item.EventId, userId))">Leave</button>                             
+                                </td>
                             </tr>
                         }
                     }
@@ -70,6 +73,9 @@ else
                                 <td>@item.Name</td>
                                 <td>@item.Date</td>
                                 <td>@item.Time</td>
+                                <td>
+                                    <button class="btn btn-primary" @onclick="(() => Delete(item.EventId, userId))">Leave</button>                             
+                                </td>
                             </tr>
                         }
                     }
@@ -101,5 +107,11 @@ else
         var user = authState.User;
         var currentUser = await UserManager.GetUserAsync(user);
         userId = currentUser.Id;
+    }
+
+    protected async Task Delete(string eID, string uId)
+    {
+        await userEventService.DeleteUserEventAsync(eID, uId);
+        await load();
     }
 }

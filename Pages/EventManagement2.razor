@@ -1,15 +1,12 @@
-﻿@page "/EventManagement"
+﻿@page "/EventManagement2"
 @using CampTiger.Models
 @using CampTiger.Data
-@using Microsoft.AspNetCore.Identity
 
-@attribute [Authorize(Roles = "admin, groupleader")]
+@attribute [Authorize(Roles = "admin")]
 
 @inject IJSRuntime JsRuntime
 @inject EventService eventService
 @inject AspNetUsersService aspNetUsersService
-@inject UserManager<IdentityUser> _UserManager
-@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <style>
     #searchKey {
@@ -24,7 +21,7 @@
 </style>
 
 <h1> Events</h1>
-<p>Create, Read, Edit, and Delete Event records.</p>
+<p>Read, Edit, and Delete Event records.</p>
 <input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
 <br />
 @if (events == null)
@@ -34,7 +31,6 @@
 
 else
 {
-    <button @onclick="@Add" class="btn btn-success">Add Event</button>
     <table class='table table-hover' id="list">
         <thead>
             <tr>
@@ -70,44 +66,12 @@ else
     </table>
 
 }
-@if (events != null && mode == MODE.Add)
-{
-    <label>EventName: </label>
-    <br />
-    <input plachehold="Name" @bind="@name" />
-    <br />
-    <label>Description: </label>
-    <br />
-    <input plachehold="Description" @bind="@description" />
-    <br />
-    <label>Date: </label>
-    <br />
-    <input plachehold="Date" @bind="@date" />
-    <br />
-    <label>Time: </label>
-    <br />
-    <input plachehold="Time" @bind="@time" />
-    <br />
-    <label>Capacity: </label>
-    <br />
-    <input plachehold="Capacity" @bind="@capacity" />
-    <br />
-    <label>Group: </label>
-    <br />
-    <input plachehold="Group ID" @bind="@Group" />
-    <br />
-    <button @onclick="@Insert" class="btn btn-warning">Insert</button>
-}
 
 @if (events != null && mode == MODE.EditDelete) // Update & Delete form
 {
     <label>EventName: </label>
     <br />
     <input plachehold="Name" @bind="@name" />
-    <br />
-    <label>Leader: </label>
-    <br />
-    <input plachehold="Leader" @bind="@leader" />
     <br />
     <label>Description: </label>
     <br />
@@ -124,8 +88,6 @@ else
     <label>Capacity: </label>
     <br />
     <input plachehold="Details" @bind="@capacity" />
-    <br />
-    <label>Group: </label>
     <br />
     <input plachehold="Group ID" @bind="@Group" />
     <br />
@@ -149,37 +111,6 @@ else
     MODE mode = MODE.None;
     Event activity;
 
-    protected async Task Insert()
-    {
-        eventId = Guid.NewGuid().ToString();
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        var currentUser = await _UserManager.GetUserAsync(user);
-
-        Event e = new Event()
-        {
-            EventId = eventId,
-            Group = Group,
-            Name = name,
-            Leader = currentUser.Id,
-            Description = description,
-            Date = date,
-            Time = time,
-            Capacity = capacity
-        };
-        await eventService.InsertEventAsync(e);
-        ClearFields();
-        await load();
-        mode = MODE.None;
-    }
-
-    [Authorize(Roles = "groupleader")]
-    protected void Add()
-    {
-        ClearFields();
-        mode = MODE.Add;
-    }
-
     protected void ClearFields()
     {
         eventId = string.Empty;
@@ -197,7 +128,6 @@ else
         {
             Group = Group,
             Name = name,
-            Leader = leader,
             Description = description,
             Date = date,
             Time = time,

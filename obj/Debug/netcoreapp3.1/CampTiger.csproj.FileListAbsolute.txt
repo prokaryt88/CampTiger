@@ -222,3 +222,7 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaratio
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\RequestManagement.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UpcomingEvents.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UpcomingEvents.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\EventManagement2.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\EventManagement2.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\MyGroups.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\MyGroups.razor.g.cs

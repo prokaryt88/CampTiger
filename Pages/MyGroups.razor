@@ -1,0 +1,82 @@
+﻿@page "/MyGroups"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@attribute [Authorize(Roles = "normal")]
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AspNetUsersService userService
+@inject GroupService groupService
+@inject UserGroupService userGroupService
+
+<h1>Groups</h1>
+
+<p>Groups you have joined</p>
+
+@if (group == null)
+{
+    <p><em>Loading...</em></p>
+}
+
+else
+{
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>Group Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var g in group)
+            {
+                @foreach (var ug in usergroup)
+                {
+                    @if (g.GroupId == ug.GroupId && ug.UserId == userId)
+                    {
+                        <tr>
+                            <td>@g.Name</td>
+                            <td>@g.Description</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="(() => Delete(g.GroupId, userId))">Leave</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@functions {
+        List<AspNetUsers> users;
+        List<Group> group;
+        List<UserGroups> usergroup;
+        String userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await userService.GetAspNetUsersAsync();
+        group = await groupService.GetGroupAsync();
+        usergroup = await userGroupService.GetUserGroupAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+    }
+
+    protected async Task Delete(string gID, string uId)
+    {
+        await userGroupService.DeleteUserGroupAsync(gID, uId);
+        await load();
+    }
+}

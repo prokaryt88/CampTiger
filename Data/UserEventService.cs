@@ -47,9 +47,9 @@ namespace CampTiger.Data
 
             return userevent;
         }
-        public async Task<UserEvent> DeleteUserEventAsync(string id)
+        public async Task<UserEvent> DeleteUserEventAsync(string eId, string uId)
         {
-            var userevent = await _context.UserEvent.FindAsync(id);
+            var userevent = await _context.UserEvent.FindAsync(eId, uId);
             if (userevent == null)
                 return null;
             _context.UserEvent.Remove(userevent);
@@ -57,6 +57,7 @@ namespace CampTiger.Data
 
             return userevent;
         }
+
         private bool UserEventExists(string id)
         {
             return _context.UserEvent.Any(e => e.UserId == id);
