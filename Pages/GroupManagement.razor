@@ -2,7 +2,7 @@
 @using CampTiger.Models
 @using CampTiger.Data
 
-@attribute [Authorize(Roles = "admin, groupleader")]
+@attribute [Authorize(Roles = "admin")]
 
 @inject GroupService groupService
 @inject AspNetUsersService aspNetUsersService

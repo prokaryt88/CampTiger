@@ -6,6 +6,7 @@
 
 @attribute [Authorize(Roles = "admin")]
 
+@inject IJSRuntime JsRuntime
 @inject UserManager<IdentityUser> _UserManager
 @inject RoleManager<IdentityRole> _RoleManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -13,7 +14,8 @@
 
 <h1> User Management </h1>
 <p> Manage User data.</p>
-
+<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by email..." title="Type in a name">
+<br>
 @if (Users == null)
 {
     <p><em> Loading...</em></p>
@@ -68,7 +70,7 @@ else
         </div>
     }
 
-    <table class='table table-hover'>
+    <table class='table table-hover' id ="list">
         <thead>
             <tr>
                 <th>EMail</th>
@@ -266,6 +268,11 @@ else
     void ClosePopup()
     {
         ShowPopup = false;
+    }
+
+    async Task LookUp()
+    {
+        await JsRuntime.InvokeVoidAsync("mySearch");
     }
 }
 

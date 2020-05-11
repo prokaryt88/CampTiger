@@ -4,11 +4,13 @@
 
 @attribute [Authorize(Roles = "admin, groupleader")]
 
+@inject IJSRuntime JsRuntime
 @inject EventService eventService
 @inject AspNetUsersService aspNetUsersService
 <h1> Events</h1>
 <p>Create, Read, Edit, and Delete Event records.</p>
-
+<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
+<br />
 @if (events == null)
 {
     <p><em> Loading...</em></p>
@@ -17,7 +19,7 @@
 else
 {
     <button @onclick="@Add" class="btn btn-success">Add Event</button>
-    <table class='table table-hover'>
+    <table class='table table-hover' id="list">
         <thead>
             <tr>
                 <th>Name</th>
@@ -221,5 +223,10 @@ else
     {
         events = await eventService.GetEventsAsync();
         users = await aspNetUsersService.GetAspNetUsersAsync();
+    }
+
+    async Task LookUp()
+    {
+        await JsRuntime.InvokeVoidAsync("mySearch");
     }
 }
