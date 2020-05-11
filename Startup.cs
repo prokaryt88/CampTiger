@@ -46,6 +46,8 @@ namespace CampTiger
             services.AddScoped<AspNetUsersService>();
             services.AddScoped<GroupService>();
             services.AddScoped<EventService>();
+            services.AddScoped<UserEventService>();
+            services.AddScoped<UserGroupService>();
             services.AddHttpContextAccessor();
         }
 

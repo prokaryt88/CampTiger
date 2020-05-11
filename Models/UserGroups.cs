@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CampTiger.Models
 {
-    public class UserGroup
+    public class UserGroups
     {
         public string GroupId { get; set; }
         public string UserId { get; set; }

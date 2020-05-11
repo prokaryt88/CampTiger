@@ -1,0 +1,98 @@
+﻿@page "/RequestManagement"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AspNetUsersService userService
+@inject EventService eventService
+@inject UserEventService userEventService
+
+<h3>Request Management</h3>
+<p>Accept or deny member event join requests.</p>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>@user.FirstName  @user.LastName</tr>
+                @foreach (var activity in records)
+                {
+                    <tr>
+                        @if (activity.UserId == user.Id & activity.Approved == false)
+                        {
+                            @foreach (var item in events)
+                            {
+                                if (activity.EventId == item.EventId)
+                                {
+                                    <td>Event and Details:</td>
+                                    <td>@item.Name</td>
+                                    <td>Date: @item.Date</td>
+                                    <td>Time: @item.Time</td>
+                                    <td>
+                                        <button class="btn btn-primary" @onclick="(() => AcceptRequest(user, item))">
+                                            Accept
+                                        </button>
+                                    </td>
+                                    <td> &nbsp;</td>
+                                }
+                            }
+
+                        }
+
+                    </tr>
+                }
+
+
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<AspNetUsers> users;
+    List<Event> events;
+    List<UserEvent> records;
+    String userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await userService.GetAspNetUsersAsync();
+        events = await eventService.GetEventsAsync();
+        records = await userEventService.GetUserEventAsync();
+    }
+
+    protected async Task AcceptRequest(AspNetUsers user, Event activity)
+    {
+        UserEvent g = new UserEvent()
+        {
+            EventId = activity.EventId,
+            UserId = user.Id,
+            Approved = true
+        };
+
+        await userEventService.UpdateUserEventAsync(activity.EventId, user.Id, g);
+        await load();
+    }
+}

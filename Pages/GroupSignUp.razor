@@ -1,0 +1,84 @@
+﻿@page "/GroupSignUp"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject GroupService groupService
+@inject UserGroupService userGroupService
+<h3>Group Sign Up</h3>
+
+@if (groups == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    
+    <div class="card-deck">
+        @foreach (var sect in groups)
+        {
+            <div class="card m-3" style="min-width: 18rem; max-width: 30.5%;">
+                <div class="card-header">
+                    <h3>@sect.Name</h3>
+                    <h5>Description: @sect.Description</h5>
+                    <h5>Group ID: @sect.GroupId</h5>
+                </div>
+                <div class="card-footer text-center">
+                    @if (sect.GroupId == null)
+                    {
+                        <input placeholder="There's no ID here" />
+                    }
+                    else
+                    {
+                        <label>Type the Group ID and click Sign-Up to join the Group</label>
+                        <input type="text" placeholder=@sect.GroupId @bind=@groupId>
+                        <button @onclick="@Insert" class="btn btn-primary"> Sign-Up </button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+
+    List<Group> groups;
+    string groupId;
+    string userId;
+    private enum MODE { None, Add };
+    MODE mode = MODE.None;
+    Group group;
+    public Group current { get; set; } = new Group();
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        groups = await groupService.GetGroupAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+    }
+
+    protected async Task Insert()
+    {
+        UserGroups g = new UserGroups()
+        {
+            GroupId = groupId,
+            UserId = userId
+        };
+        await userGroupService.InsertUserGroupAsync(g);
+        await load();
+        mode = MODE.None;
+    }
+}

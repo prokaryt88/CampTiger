@@ -216,3 +216,9 @@ C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\Gro
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UserManagement.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UserInfo.razor.g.cs
 C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\UserInfo.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\EventSignUp.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GroupSignUp.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\EventSignUp.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\GroupSignUp.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\RequestManagement.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\RequestManagement.razor.g.cs

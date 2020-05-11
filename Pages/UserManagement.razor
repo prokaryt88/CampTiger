@@ -84,7 +84,7 @@ else
             {
                 <tr @onclick="@(() => Show(item.Id))">
                     <td>@item.Email</td>
-                    <td>@_RoleManager.FindByIdAsync(item.Id)</td>
+                    <td>@permissions</td>
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Address</td>
@@ -146,7 +146,7 @@ else
 
     List<AspNetUsers> Users;
     string userId;
-    string permissions;
+    string permissions = "";
     string firstName;
     string lastName;
     string address;
@@ -158,7 +158,9 @@ else
     AspNetUsers User;
     bool ShowPopup = false;
     IdentityUser objUser = new IdentityUser();
+
     string CurrentUserRole { get; set; } = "User";
+
     List<string> Options = new List<string>() { "User", "Group Leader", "Admin" };
     string strError = "";
 
@@ -224,6 +226,15 @@ else
         };
 
         await userService.UpdateAspNetUsersAsync(userId, u);
+        var change = await _UserManager.FindByIdAsync(userId);
+        
+        // clears out all previous roles before adding in new one.
+        await _UserManager.RemoveFromRoleAsync(change, "User");
+        await _UserManager.RemoveFromRoleAsync(change, "Admin");
+        await _UserManager.RemoveFromRoleAsync(change, "Group Leader");
+        // add selected role for user account
+        await _UserManager.AddToRoleAsync(change, CurrentUserRole);
+
         ClearFields();
         await load();
         mode = MODE.None;
