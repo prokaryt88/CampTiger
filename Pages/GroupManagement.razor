@@ -63,8 +63,10 @@ else
 }
 @if (groups != null && mode == MODE.EditDelete) // Update & Delete form
 {
-    <label> Group ID: @groupId</label>
+    <label> Group ID:</label>
     <br>
+    <input placeholder="Group Id" @bind="@groupId" />
+    <br />
     <label> Leader:</label>
     <br>
     <input placeholder="Leader" @bind="@leader" />

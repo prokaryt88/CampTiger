@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj": {}
+    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (6)\\CampTiger-master\\CampTiger.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj": {
+    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (6)\\CampTiger-master\\CampTiger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj",
+        "projectUniqueName": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (6)\\CampTiger-master\\CampTiger.csproj",
         "projectName": "CampTiger",
-        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\obj\\",
+        "projectPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (6)\\CampTiger-master\\CampTiger.csproj",
+        "packagesPath": "C:\\Users\\jkafk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (6)\\CampTiger-master\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jkafk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

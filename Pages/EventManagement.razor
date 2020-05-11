@@ -1,31 +1,17 @@
 ﻿@page "/EventManagement"
 @using CampTiger.Models
 @using CampTiger.Data
-@using Microsoft.AspNetCore.Identity
 
 @attribute [Authorize(Roles = "admin, groupleader")]
 
 @inject IJSRuntime JsRuntime
 @inject EventService eventService
 @inject AspNetUsersService aspNetUsersService
-@inject UserManager<IdentityUser> _UserManager
-@inject AuthenticationStateProvider AuthenticationStateProvider
-
-<style>
-    #searchKey {
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        width: 100%;
-        font-size: 17px;
-        padding: 13px 20px 13px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-    }
-</style>
-
 <h1> Events</h1>
 <p>Create, Read, Edit, and Delete Event records.</p>
 <input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
+<p>Manage event members:</p>
+<a href="MemberAcceptanceManagement" class="btn btn-info" role="button">Manage Event Members</a>
 <br />
 @if (events == null)
 {
@@ -76,6 +62,10 @@ else
     <br />
     <input plachehold="Name" @bind="@name" />
     <br />
+    <label>Leader: </label>
+    <br />
+    <input plachehold="Leader" @bind="@leader" />
+    <br />
     <label>Description: </label>
     <br />
     <input plachehold="Description" @bind="@description" />
@@ -125,8 +115,6 @@ else
     <br />
     <input plachehold="Details" @bind="@capacity" />
     <br />
-    <label>Group: </label>
-    <br />
     <input plachehold="Group ID" @bind="@Group" />
     <br />
     <button @onclick="@Update" class="btn btn-primary">Update</button>
@@ -152,16 +140,13 @@ else
     protected async Task Insert()
     {
         eventId = Guid.NewGuid().ToString();
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        var currentUser = await _UserManager.GetUserAsync(user);
 
         Event e = new Event()
         {
             EventId = eventId,
             Group = Group,
             Name = name,
-            Leader = currentUser.Id,
+            Leader = leader,
             Description = description,
             Date = date,
             Time = time,
@@ -173,7 +158,6 @@ else
         mode = MODE.None;
     }
 
-    [Authorize(Roles = "groupleader")]
     protected void Add()
     {
         ClearFields();
