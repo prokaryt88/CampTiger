@@ -4,6 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 
+@attribute [Authorize(Roles = "admin")]
+
 @inject UserManager<IdentityUser> _UserManager
 @inject RoleManager<IdentityRole> _RoleManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -159,9 +161,9 @@ else
     bool ShowPopup = false;
     IdentityUser objUser = new IdentityUser();
 
-    string CurrentUserRole { get; set; } = "User";
+    string CurrentUserRole { get; set; } = "normal";
 
-    List<string> Options = new List<string>() { "User", "Group Leader", "Admin" };
+    List<string> Options = new List<string>() { "normal", "Group Leader", "Admin" };
     string strError = "";
 
     protected override async Task OnInitializedAsync()
@@ -227,7 +229,7 @@ else
 
         await userService.UpdateAspNetUsersAsync(userId, u);
         var change = await _UserManager.FindByIdAsync(userId);
-        
+
         // clears out all previous roles before adding in new one.
         await _UserManager.RemoveFromRoleAsync(change, "User");
         await _UserManager.RemoveFromRoleAsync(change, "Admin");

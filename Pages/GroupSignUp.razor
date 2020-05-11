@@ -3,6 +3,8 @@
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
 
+@attribute [Authorize(Roles = "admin, groupleader, normal")]
+
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -16,31 +18,26 @@
 }
 else
 {
-    
-    <div class="card-deck">
-        @foreach (var sect in groups)
-        {
-            <div class="card m-3" style="min-width: 18rem; max-width: 30.5%;">
-                <div class="card-header">
-                    <h3>@sect.Name</h3>
-                    <h5>Description: @sect.Description</h5>
-                    <h5>Group ID: @sect.GroupId</h5>
-                </div>
-                <div class="card-footer text-center">
-                    @if (sect.GroupId == null)
-                    {
-                        <input placeholder="There's no ID here" />
-                    }
-                    else
-                    {
-                        <label>Type the Group ID and click Sign-Up to join the Group</label>
-                        <input type="text" placeholder=@sect.GroupId @bind=@groupId>
-                        <button @onclick="@Insert" class="btn btn-primary"> Sign-Up </button>
-                    }
-                </div>
-            </div>
-        }
-    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sect in groups)
+            {
+                <tr>
+                    <td>@sect.Name</td>
+                    <td>@sect.Description</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="(() => Insert(sect))">Sign-Up</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
@@ -70,11 +67,11 @@ else
         userId = currentUser.Id;
     }
 
-    protected async Task Insert()
+    protected async Task Insert(Group activity)
     {
         UserGroups g = new UserGroups()
         {
-            GroupId = groupId,
+            GroupId = activity.GroupId,//groupId,
             UserId = userId
         };
         await userGroupService.InsertUserGroupAsync(g);

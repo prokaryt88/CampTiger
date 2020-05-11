@@ -1,7 +1,11 @@
 ﻿@page "/EventManagement"
 @using CampTiger.Models
 @using CampTiger.Data
+
+@attribute [Authorize(Roles = "admin")]
+
 @inject EventService eventService
+@inject AspNetUsersService aspNetUsersService
 <h1> Events</h1>
 <p>Create, Read, Edit, and Delete Event records.</p>
 
@@ -28,15 +32,21 @@ else
         <tbody>
             @foreach (var item in events)
             {
-                <tr @onclick="@(() => Show(item.EventId))">
-                    <td>@item.Name</td>
-                    <td>@item.Leader</td>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
-                    <td>@item.Time</td>
-                    <td>@item.Capacity</td>
-                    <td>@item.Group</td>
-                </tr>
+                @foreach (var user in users)
+                {
+                    @if (user.Id == item.Leader)
+                    {
+                        <tr @onclick="@(() => Show(item.EventId))">
+                            <td>@item.Name</td>
+                            <td>@user.FirstName  @user.LastName</td>
+                            <td>@item.Description</td>
+                            <td>@item.Date</td>
+                            <td>@item.Time</td>
+                            <td>@item.Capacity</td>
+                            <td>@item.Group</td>
+                        </tr>
+                    }
+                }
             }
         </tbody>
     </table>
@@ -110,6 +120,7 @@ else
 
 @functions{
     List<Event> events;
+    List<AspNetUsers> users;
     string eventId;
     string leader;
     string Group;
@@ -209,5 +220,6 @@ else
     protected async Task load()
     {
         events = await eventService.GetEventsAsync();
+        users = await aspNetUsersService.GetAspNetUsersAsync();
     }
 }

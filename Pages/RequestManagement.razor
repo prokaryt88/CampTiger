@@ -3,6 +3,8 @@
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
 
+@attribute [Authorize(Roles = "admin, groupleader, normal")]
+
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
