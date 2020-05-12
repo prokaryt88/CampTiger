@@ -16,5 +16,6 @@ namespace CampTiger.Models
         public string Zip { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string FamilyId { get; set; }
     } 
 }

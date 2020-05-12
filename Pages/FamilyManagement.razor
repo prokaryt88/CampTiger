@@ -11,7 +11,6 @@
 @inject IJSRuntime JsRuntime
 @inject AspNetUsersService aspNetUsersService
 @inject FamilyService  familyService
-@inject UserFamilyService userFamilyService
 
 <style>
 
@@ -96,7 +95,6 @@ else
     List<AspNetUsers> users;
     List<Group> groups;
     List<Family> families;
-    List<UserFamily> records;
     string userId;
     string familyId;
     string leader;
@@ -109,6 +107,7 @@ else
     protected async Task Insert()
     {
         familyId = Guid.NewGuid().ToString();
+        AspNetUsers u = await aspNetUsersService.GetAspNetUsersByIdAsync(userId);
 
         Family e = new Family()
         {
@@ -117,6 +116,8 @@ else
             Name = name
         };
         await familyService.InsertFamilyAsync(e);
+        u.FamilyId = familyId;
+        await aspNetUsersService.UpdateAspNetUsersAsync(userId, u);
         ClearFields();
         await load();
         mode = MODE.None;

@@ -47,6 +47,7 @@ namespace CampTiger.Data
             AspNetUsers.State = u.State;
             AspNetUsers.Zip = u.Zip;
             AspNetUsers.Phone = u.Phone;
+            AspNetUsers.FamilyId = u.FamilyId;
 
             _context.AspNetUsers.Update(AspNetUsers);
             await _context.SaveChangesAsync();

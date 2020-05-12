@@ -11,7 +11,6 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AspNetUsersService userService
 @inject FamilyService familyService
-@inject UserFamilyService userFamilyService
 
 <h3>My Family</h3>
 
@@ -23,46 +22,55 @@
 }
 else
 {
-    <table class='table table-hover' id="list">
-        <thead>
-            <tr>
-                <th>EMail</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Phone</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Users)
-            {
-                @foreach (var uf in UserFamily)
+    @if (familyId == null)
+    {
+        <p>You Are not in a Family</p>
+        <a href="FamilySignUp" class="btn btn-info" role="button">Join A Family</a>
+        <br />
+    }
+    else
+    {
+        <table class='table table-hover' id="list">
+            <thead>
+                <tr>
+                    <th>EMail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Users)
                 {
-                    @if (uf.FamilyId == familyId)
+                    @if (item.FamilyId == familyId & item.FamilyId != null)
                     {
                         <tr>
-                                <td>@item.Email</td>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Address</td>
-                                <td>@item.State</td>
-                                <td>@item.Zip</td>
-                                <td>@item.Phone</td>
+                            <td>@item.Email</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Address</td>
+                            <td>@item.State</td>
+                            <td>@item.Zip</td>
+                            <td>@item.Phone</td>
                         </tr>
                     }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+        <p>Wrong Family?</p>
+        <button class="btn btn-primary" @onclick="(() => Update(userId))">Leave Current Family</button>
+    }
+
 }
 
 @code {
 
     List<AspNetUsers> Users;
     List<Family> Familys;
-    List<UserFamily> UserFamily;
     string userId;
     string firstName;
     string lastName;
@@ -84,16 +92,20 @@ else
     {
         Users = await userService.GetAspNetUsersAsync();
         Familys = await familyService.GetFamilyAsync();
-        UserFamily = await userFamilyService.GetUserFamilyAsync();
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
         var currentUser = await _UserManager.GetUserAsync(user);
         userId = currentUser.Id;
+        AspNetUsers aspUser = await userService.GetAspNetUsersByIdAsync(userId);
+        familyId = aspUser.FamilyId;
+        //await load();
+    }
 
-        foreach (var f in UserFamily)
-        {
-            if (f.UserId == userId)
-                familyId = f.FamilyId;
-        }
+    protected async Task Update(string userId)
+    {
+        AspNetUsers removeFamily = await userService.GetAspNetUsersByIdAsync(userId);
+        removeFamily.FamilyId = null;
+        await userService.UpdateAspNetUsersAsync(userId, removeFamily);
+        await load();
     }
 }

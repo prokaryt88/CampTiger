@@ -1,0 +1,90 @@
+﻿@page "/FamilySignUp"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@attribute [Authorize(Roles = "normal")]
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AspNetUsersService aspNetUsersService
+@inject FamilyService familyService
+<h3>Find Your Family</h3>
+
+@if (family == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Family Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in family)
+            {
+                @if (!hasfamily)
+                {
+                    <tr>
+                        <td>@f.Name</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="(() => Update(f.FamilyId))">Join</button>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>You Are Already In a Family</th>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    List<Family> family;
+    List<AspNetUsers> users;
+    string familyId;
+    string userId;
+    bool hasfamily = false;
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await aspNetUsersService.GetAspNetUsersAsync();
+        family = await familyService.GetFamilyAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+        AspNetUsers aspUser = await aspNetUsersService.GetAspNetUsersByIdAsync(userId);
+
+        if (aspUser.FamilyId != null)
+            hasfamily = true;
+
+    }
+
+    protected async Task Update(string familyId)
+    {
+        AspNetUsers u = await aspNetUsersService.GetAspNetUsersByIdAsync(userId);
+
+        u.FamilyId = familyId;
+
+        await aspNetUsersService.UpdateAspNetUsersAsync(userId, u);
+        await load();
+    }
+}

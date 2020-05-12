@@ -14,8 +14,6 @@
 @inject GroupService  groupService
 
 <style>
-
-
     #searchKey {
         background-position: 10px 10px;
         background-repeat: no-repeat;
@@ -35,20 +33,22 @@
 <a href="MemberAcceptanceManagement" class="btn btn-info" role="button">Manage Event Members</a>
 <br />
 
-@foreach (var sect in groups)
+@if (groups != null)
 {
-    if (sect.Leader == userId)
-    {
-        Group = sect.GroupId;
-        Console.WriteLine(@Group);
-        Console.WriteLine(userId);
-        break;
-    }
-    else
-    {
-        leadsGroup = false;
+        @foreach (var sect in groups)
+        {
+            if (sect.Leader == userId)
+            {
+            Group = sect.GroupId;
+            break;
+        }
+        else
+        {
+            leadsGroup = false;
+        }
     }
 }
+
 @if (events == null)
 {
     <p><em> Loading...</em></p>
