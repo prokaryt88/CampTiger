@@ -10,91 +10,91 @@ namespace CampTiger.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 1 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 7 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 8 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 9 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
 using CampTiger.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
 using CampTiger.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
            [Authorize(Roles = "normal")]
 
 #line default
@@ -109,7 +109,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.AddMarkupContent(0, "<h1>Groups</h1>\n\n");
             __builder.AddMarkupContent(1, "<p>Groups you have joined</p>\n\n");
 #nullable restore
-#line 19 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 19 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
  if (group == null)
 {
 
@@ -119,7 +119,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.AddContent(2, "    ");
             __builder.AddMarkupContent(3, "<p><em>Loading...</em></p>\n");
 #nullable restore
-#line 22 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 22 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
 }
 
 else
@@ -136,7 +136,7 @@ else
             __builder.OpenElement(9, "tbody");
             __builder.AddMarkupContent(10, "\n");
 #nullable restore
-#line 34 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 34 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
              foreach (var g in group)
             {
                 
@@ -145,7 +145,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 36 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 36 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                  foreach (var ug in usergroup)
                 {
                     
@@ -154,7 +154,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 38 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 38 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                      if (g.GroupId == ug.GroupId && ug.UserId == userId)
                     {
 
@@ -167,7 +167,7 @@ else
             __builder.OpenElement(14, "td");
             __builder.AddContent(15, 
 #nullable restore
-#line 41 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 41 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                                  g.Name
 
 #line default
@@ -179,7 +179,7 @@ else
             __builder.OpenElement(17, "td");
             __builder.AddContent(18, 
 #nullable restore
-#line 42 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 42 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                                  g.Description
 
 #line default
@@ -194,7 +194,7 @@ else
             __builder.AddAttribute(23, "class", "btn btn-primary");
             __builder.AddAttribute(24, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 44 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 44 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                                                                           (() => Delete(g.GroupId, userId))
 
 #line default
@@ -209,14 +209,14 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(28, "\n");
 #nullable restore
-#line 47 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 47 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                     }
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 47 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                      
                 }
 
@@ -224,7 +224,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 48 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
                  
             }
 
@@ -237,7 +237,7 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(31, "\n");
 #nullable restore
-#line 52 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 52 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
 }
 
 #line default
@@ -246,7 +246,7 @@ else
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyGroups.razor"
+#line 55 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyGroups.razor"
             
         List<AspNetUsers> users;
         List<Group> group;

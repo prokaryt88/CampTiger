@@ -10,98 +10,98 @@ namespace CampTiger.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 1 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 7 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 8 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 9 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 using CampTiger.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 using CampTiger.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 using System.Security.Claims;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 7 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
            [Authorize(Roles = "normal")]
 
 #line default
@@ -113,10 +113,10 @@ using System.Security.Claims;
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.AddMarkupContent(0, "<h3>My Family</h3>\n\n");
-            __builder.AddMarkupContent(1, "<p>Your Family Member\'s Accounts</p>\n\n");
+            __builder.AddMarkupContent(0, "<h3>My Family</h3>\r\n\r\n");
+            __builder.AddMarkupContent(1, "<p>Your Family Member\'s Accounts</p>\r\n\r\n");
 #nullable restore
-#line 20 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 20 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
  if (Users == null)
 {
 
@@ -124,9 +124,9 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             __builder.AddContent(2, "    ");
-            __builder.AddMarkupContent(3, "<p><em> Loading...</em></p>\n");
+            __builder.AddMarkupContent(3, "<p><em> Loading...</em></p>\r\n");
 #nullable restore
-#line 23 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 23 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 }
 else
 {
@@ -138,7 +138,7 @@ else
             __builder.OpenElement(5, "table");
             __builder.AddAttribute(6, "class", "table table-hover");
             __builder.AddAttribute(7, "id", "list");
-            __builder.AddMarkupContent(8, "\n        ");
+            __builder.AddMarkupContent(8, "\r\n        ");
             __builder.AddMarkupContent(9, @"<thead>
             <tr>
                 <th>EMail</th>
@@ -152,9 +152,9 @@ else
         </thead>
         ");
             __builder.OpenElement(10, "tbody");
-            __builder.AddMarkupContent(11, "\n");
+            __builder.AddMarkupContent(11, "\r\n");
 #nullable restore
-#line 39 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 39 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
              foreach (var item in Users)
             {
                 
@@ -163,7 +163,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 41 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 41 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                  foreach (var uf in UserFamily)
                 {
                     
@@ -172,7 +172,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 43 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 43 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                      if (uf.FamilyId == familyId)
                     {
 
@@ -181,11 +181,11 @@ else
 #nullable disable
             __builder.AddContent(12, "                        ");
             __builder.OpenElement(13, "tr");
-            __builder.AddMarkupContent(14, "\n                                ");
+            __builder.AddMarkupContent(14, "\r\n                                ");
             __builder.OpenElement(15, "td");
             __builder.AddContent(16, 
 #nullable restore
-#line 46 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 46 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.Email
 
 #line default
@@ -193,11 +193,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(17, "\n                                ");
+            __builder.AddMarkupContent(17, "\r\n                                ");
             __builder.OpenElement(18, "td");
             __builder.AddContent(19, 
 #nullable restore
-#line 47 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 47 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.FirstName
 
 #line default
@@ -205,11 +205,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(20, "\n                                ");
+            __builder.AddMarkupContent(20, "\r\n                                ");
             __builder.OpenElement(21, "td");
             __builder.AddContent(22, 
 #nullable restore
-#line 48 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 48 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.LastName
 
 #line default
@@ -217,11 +217,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(23, "\n                                ");
+            __builder.AddMarkupContent(23, "\r\n                                ");
             __builder.OpenElement(24, "td");
             __builder.AddContent(25, 
 #nullable restore
-#line 49 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 49 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.Address
 
 #line default
@@ -229,11 +229,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(26, "\n                                ");
+            __builder.AddMarkupContent(26, "\r\n                                ");
             __builder.OpenElement(27, "td");
             __builder.AddContent(28, 
 #nullable restore
-#line 50 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 50 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.State
 
 #line default
@@ -241,11 +241,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(29, "\n                                ");
+            __builder.AddMarkupContent(29, "\r\n                                ");
             __builder.OpenElement(30, "td");
             __builder.AddContent(31, 
 #nullable restore
-#line 51 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 51 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.Zip
 
 #line default
@@ -253,11 +253,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(32, "\n                                ");
+            __builder.AddMarkupContent(32, "\r\n                                ");
             __builder.OpenElement(33, "td");
             __builder.AddContent(34, 
 #nullable restore
-#line 52 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 52 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                                      item.Phone
 
 #line default
@@ -265,18 +265,18 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(35, "\n                        ");
+            __builder.AddMarkupContent(35, "\r\n                        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(36, "\n");
+            __builder.AddMarkupContent(36, "\r\n");
 #nullable restore
-#line 54 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 54 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                     }
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 54 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 54 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                      
                 }
 
@@ -284,7 +284,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 55 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 55 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
                  
 
             }
@@ -294,11 +294,11 @@ else
 #nullable disable
             __builder.AddContent(37, "        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(38, "\n    ");
+            __builder.AddMarkupContent(38, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(39, "\n");
+            __builder.AddMarkupContent(39, "\r\n");
 #nullable restore
-#line 60 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 60 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
 }
 
 #line default
@@ -307,7 +307,7 @@ else
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\MyFamily.razor"
+#line 62 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\MyFamily.razor"
        
 
     List<AspNetUsers> Users;

@@ -10,91 +10,91 @@ namespace CampTiger.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 1 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 7 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 8 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 9 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
 using CampTiger.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
 using CampTiger.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
            [Authorize(Roles = "normal")]
 
 #line default
@@ -106,10 +106,10 @@ using Microsoft.AspNetCore.Identity;
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.AddMarkupContent(0, "<h1>Users</h1>\n\n");
-            __builder.AddMarkupContent(1, "<p>Your Upcoming Approved Events and Pending Requests</p>\n\n");
+            __builder.AddMarkupContent(0, "<h1>Users</h1>\r\n\r\n");
+            __builder.AddMarkupContent(1, "<p>Your Upcoming Approved Events and Pending Requests</p>\r\n\r\n");
 #nullable restore
-#line 19 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 19 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
  if (users == null)
 {
 
@@ -117,9 +117,9 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             __builder.AddContent(2, "    ");
-            __builder.AddMarkupContent(3, "<p><em>Loading...</em></p>\n");
+            __builder.AddMarkupContent(3, "<p><em>Loading...</em></p>\r\n");
 #nullable restore
-#line 22 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 22 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
 }
 else
 {
@@ -130,12 +130,12 @@ else
             __builder.AddContent(4, "    ");
             __builder.OpenElement(5, "table");
             __builder.AddAttribute(6, "class", "table table-hover");
-            __builder.AddMarkupContent(7, "\n        ");
-            __builder.AddMarkupContent(8, "<thead>\n            <tr>\n                <th>Your upcoming events</th>\n                <th>Date</th>\n                <th>Time</th>\n                <th>Leave</th>\n            </tr>\n        </thead>\n        ");
+            __builder.AddMarkupContent(7, "\r\n        ");
+            __builder.AddMarkupContent(8, "<thead>\r\n            <tr>\r\n                <th>Your upcoming events</th>\r\n                <th>Date</th>\r\n                <th>Time</th>\r\n                <th>Leave</th>\r\n            </tr>\r\n        </thead>\r\n        ");
             __builder.OpenElement(9, "tbody");
-            __builder.AddMarkupContent(10, "\n");
+            __builder.AddMarkupContent(10, "\r\n");
 #nullable restore
-#line 35 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 35 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
              foreach (var activity in records)
             {
                 
@@ -144,7 +144,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 37 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 37 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                  if (activity.Approved == true & activity.UserId == userId)
                 {
                     
@@ -153,7 +153,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 39 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 39 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                      foreach (var item in events)
                     {
                         
@@ -162,7 +162,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 41 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 41 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                          if (activity.EventId == item.EventId)
                         {
 
@@ -171,11 +171,11 @@ else
 #nullable disable
             __builder.AddContent(11, "                            ");
             __builder.OpenElement(12, "tr");
-            __builder.AddMarkupContent(13, "\n                                ");
+            __builder.AddMarkupContent(13, "\r\n                                ");
             __builder.OpenElement(14, "td");
             __builder.AddContent(15, 
 #nullable restore
-#line 44 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 44 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Name
 
 #line default
@@ -183,11 +183,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(16, "\n                                ");
+            __builder.AddMarkupContent(16, "\r\n                                ");
             __builder.OpenElement(17, "td");
             __builder.AddContent(18, 
 #nullable restore
-#line 45 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 45 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Date
 
 #line default
@@ -195,11 +195,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(19, "\n                                ");
+            __builder.AddMarkupContent(19, "\r\n                                ");
             __builder.OpenElement(20, "td");
             __builder.AddContent(21, 
 #nullable restore
-#line 46 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 46 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Time
 
 #line default
@@ -207,14 +207,14 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(22, "\n                                ");
+            __builder.AddMarkupContent(22, "\r\n                                ");
             __builder.OpenElement(23, "td");
-            __builder.AddMarkupContent(24, "\n                                    ");
+            __builder.AddMarkupContent(24, "\r\n                                    ");
             __builder.OpenElement(25, "button");
             __builder.AddAttribute(26, "class", "btn btn-primary");
             __builder.AddAttribute(27, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 48 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 48 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                                                               (() => Delete(item.EventId, userId))
 
 #line default
@@ -223,20 +223,20 @@ else
             ));
             __builder.AddContent(28, "Leave");
             __builder.CloseElement();
-            __builder.AddMarkupContent(29, "                             \n                                ");
+            __builder.AddMarkupContent(29, "                             \r\n                                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(30, "\n                            ");
+            __builder.AddMarkupContent(30, "\r\n                            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(31, "\n");
+            __builder.AddMarkupContent(31, "\r\n");
 #nullable restore
-#line 51 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 51 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                         }
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 51 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 51 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                          
                     }
 
@@ -244,7 +244,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 52 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 52 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                      
 
                 }
@@ -253,7 +253,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 54 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 54 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                  
             }
 
@@ -262,17 +262,17 @@ else
 #nullable disable
             __builder.AddContent(32, "        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(33, "\n    ");
+            __builder.AddMarkupContent(33, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(34, "\n    ");
+            __builder.AddMarkupContent(34, "\r\n    ");
             __builder.OpenElement(35, "table");
             __builder.AddAttribute(36, "class", "table table-hover");
-            __builder.AddMarkupContent(37, "\n        ");
-            __builder.AddMarkupContent(38, "<thead>\n            <tr>\n                <th>Pending join requests</th>\n                <th>Date</th>\n                <th>Time</th>\n                <th>Leave</th>\n            </tr>\n        </thead>\n        ");
+            __builder.AddMarkupContent(37, "\r\n        ");
+            __builder.AddMarkupContent(38, "<thead>\r\n            <tr>\r\n                <th>Pending join requests</th>\r\n                <th>Date</th>\r\n                <th>Time</th>\r\n                <th>Leave</th>\r\n            </tr>\r\n        </thead>\r\n        ");
             __builder.OpenElement(39, "tbody");
-            __builder.AddMarkupContent(40, "\n");
+            __builder.AddMarkupContent(40, "\r\n");
 #nullable restore
-#line 68 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 68 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
              foreach (var activity in records)
             {
                 
@@ -281,7 +281,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 70 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 70 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                  if (activity.Approved == false & activity.UserId == userId)
                 {
                     
@@ -290,7 +290,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 72 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 72 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                      foreach (var item in events)
                     {
                         
@@ -299,7 +299,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 74 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 74 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                          if (activity.EventId == item.EventId)
                         {
 
@@ -308,11 +308,11 @@ else
 #nullable disable
             __builder.AddContent(41, "                            ");
             __builder.OpenElement(42, "tr");
-            __builder.AddMarkupContent(43, "\n                                ");
+            __builder.AddMarkupContent(43, "\r\n                                ");
             __builder.OpenElement(44, "td");
             __builder.AddContent(45, 
 #nullable restore
-#line 77 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 77 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Name
 
 #line default
@@ -320,11 +320,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(46, "\n                                ");
+            __builder.AddMarkupContent(46, "\r\n                                ");
             __builder.OpenElement(47, "td");
             __builder.AddContent(48, 
 #nullable restore
-#line 78 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 78 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Date
 
 #line default
@@ -332,11 +332,11 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(49, "\n                                ");
+            __builder.AddMarkupContent(49, "\r\n                                ");
             __builder.OpenElement(50, "td");
             __builder.AddContent(51, 
 #nullable restore
-#line 79 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 79 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                      item.Time
 
 #line default
@@ -344,14 +344,14 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(52, "\n                                ");
+            __builder.AddMarkupContent(52, "\r\n                                ");
             __builder.OpenElement(53, "td");
-            __builder.AddMarkupContent(54, "\n                                    ");
+            __builder.AddMarkupContent(54, "\r\n                                    ");
             __builder.OpenElement(55, "button");
             __builder.AddAttribute(56, "class", "btn btn-primary");
             __builder.AddAttribute(57, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 81 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 81 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                                                                               (() => Delete(item.EventId, userId))
 
 #line default
@@ -360,20 +360,20 @@ else
             ));
             __builder.AddContent(58, "Leave");
             __builder.CloseElement();
-            __builder.AddMarkupContent(59, "                             \n                                ");
+            __builder.AddMarkupContent(59, "                             \r\n                                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(60, "\n                            ");
+            __builder.AddMarkupContent(60, "\r\n                            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(61, "\n");
+            __builder.AddMarkupContent(61, "\r\n");
 #nullable restore
-#line 84 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 84 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                         }
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 84 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 84 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                          
                     }
 
@@ -381,7 +381,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 85 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 85 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                      
 
                 }
@@ -390,7 +390,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 87 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 87 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
                  
             }
 
@@ -399,11 +399,11 @@ else
 #nullable disable
             __builder.AddContent(62, "        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(63, "\n    ");
+            __builder.AddMarkupContent(63, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(64, "\n");
+            __builder.AddMarkupContent(64, "\r\n");
 #nullable restore
-#line 91 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 91 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
 }
 
 #line default
@@ -412,7 +412,7 @@ else
         }
         #pragma warning restore 1998
 #nullable restore
-#line 94 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\UpcomingEvents.razor"
+#line 94 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\UpcomingEvents.razor"
             
     List<AspNetUsers> users;
     List<Event> events;

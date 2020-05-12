@@ -13,20 +13,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Areas\Identity\Pages\Account\LogOut.cshtml"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\Areas\Identity\Pages\Account\LogOut.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Areas\Identity\Pages\Account\LogOut.cshtml"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\Areas\Identity\Pages\Account\LogOut.cshtml"
            [IgnoreAntiforgeryToken]
 
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e04f7253fc9a65eaac5be450faa0e546f1da1022", @"/Areas/Identity/Pages/Account/LogOut.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"580e87faa4f26b07c32280b4a4a19c3f61b16786", @"/Areas/Identity/Pages/Account/LogOut.cshtml")]
     public class Areas_Identity_Pages_Account_LogOut : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         #pragma warning disable 1998
@@ -35,7 +35,7 @@ using Microsoft.AspNetCore.Identity;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Areas\Identity\Pages\Account\LogOut.cshtml"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\Areas\Identity\Pages\Account\LogOut.cshtml"
             
     public async Task<IActionResult> OnPost()
     {

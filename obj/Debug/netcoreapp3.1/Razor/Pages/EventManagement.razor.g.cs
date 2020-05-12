@@ -10,91 +10,91 @@ namespace CampTiger.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 1 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 5 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 7 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 8 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\_Imports.razor"
+#line 9 "C:\Users\Alex\Documents\GitHub\CampTiger\_Imports.razor"
 using CampTiger.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 2 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 using CampTiger.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 3 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 using CampTiger.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 4 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 6 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
            [Authorize(Roles = "groupleader")]
 
 #line default
@@ -128,7 +128,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.AddAttribute(5, "id", "searchKey");
             __builder.AddAttribute(6, "onkeyup", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.KeyboardEventArgs>(this, 
 #nullable restore
-#line 32 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 32 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                              LookUp
 
 #line default
@@ -142,7 +142,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.AddMarkupContent(10, "<p>Manage event members:</p>\n");
             __builder.AddMarkupContent(11, "<a href=\"MemberAcceptanceManagement\" class=\"btn btn-info\" role=\"button\">Manage Event Members</a>\n<br>\n\n");
 #nullable restore
-#line 38 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 38 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
  foreach (var sect in groups)
 {
     if (sect.Leader == userId)
@@ -162,7 +162,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
 #nullable restore
-#line 52 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 52 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
  if (events == null)
 {
 
@@ -172,7 +172,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.AddContent(12, "    ");
             __builder.AddMarkupContent(13, "<p><em> Loading...</em></p>\n");
 #nullable restore
-#line 55 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 55 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 }
 else if (!leadsGroup)
 {
@@ -183,7 +183,7 @@ else if (!leadsGroup)
             __builder.AddContent(14, "    ");
             __builder.AddMarkupContent(15, "<p>You have the permissions of a group leader, but are not actually leading a group! Please message the administrator.</p>\n");
 #nullable restore
-#line 59 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 59 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 }
 else
 {
@@ -196,7 +196,7 @@ else
             __builder.AddAttribute(18, "name", "btnAdd");
             __builder.AddAttribute(19, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 62 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 62 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      Add
 
 #line default
@@ -225,7 +225,7 @@ else
             __builder.OpenElement(28, "tbody");
             __builder.AddMarkupContent(29, "\n");
 #nullable restore
-#line 75 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 75 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
              foreach (var item in events)
             {
                 
@@ -234,7 +234,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 77 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 77 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                  foreach (var user in users)
                 {
                     
@@ -243,7 +243,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 79 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 79 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                      if (user.Id == item.Leader)
                     {
 
@@ -254,7 +254,7 @@ else
             __builder.OpenElement(31, "tr");
             __builder.AddAttribute(32, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 81 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 81 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                         () => Show(item.EventId)
 
 #line default
@@ -265,7 +265,7 @@ else
             __builder.OpenElement(34, "td");
             __builder.AddContent(35, 
 #nullable restore
-#line 82 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 82 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  item.Name
 
 #line default
@@ -277,7 +277,7 @@ else
             __builder.OpenElement(37, "td");
             __builder.AddContent(38, 
 #nullable restore
-#line 83 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 83 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  user.FirstName
 
 #line default
@@ -287,7 +287,7 @@ else
             __builder.AddContent(39, "  ");
             __builder.AddContent(40, 
 #nullable restore
-#line 83 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 83 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                                   user.LastName
 
 #line default
@@ -299,7 +299,7 @@ else
             __builder.OpenElement(42, "td");
             __builder.AddContent(43, 
 #nullable restore
-#line 84 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 84 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  item.Description
 
 #line default
@@ -311,7 +311,7 @@ else
             __builder.OpenElement(45, "td");
             __builder.AddContent(46, 
 #nullable restore
-#line 85 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 85 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  item.Date
 
 #line default
@@ -323,7 +323,7 @@ else
             __builder.OpenElement(48, "td");
             __builder.AddContent(49, 
 #nullable restore
-#line 86 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 86 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  item.Time
 
 #line default
@@ -335,7 +335,7 @@ else
             __builder.OpenElement(51, "td");
             __builder.AddContent(52, 
 #nullable restore
-#line 87 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 87 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                  item.Capacity
 
 #line default
@@ -348,7 +348,7 @@ else
             __builder.AddAttribute(55, "type", "hidden");
             __builder.AddAttribute(56, "plachehold", 
 #nullable restore
-#line 88 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 88 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                                               eventId
 
 #line default
@@ -357,7 +357,7 @@ else
             );
             __builder.AddAttribute(57, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 88 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 88 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                                                                item.EventId
 
 #line default
@@ -371,14 +371,14 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(60, "\n");
 #nullable restore
-#line 90 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 90 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                     }
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 90 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 90 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                      
                 }
 
@@ -386,7 +386,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 91 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 91 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                  
             }
 
@@ -399,7 +399,7 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(63, "\n");
 #nullable restore
-#line 95 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 95 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 
 }
 
@@ -407,7 +407,7 @@ else
 #line hidden
 #nullable disable
 #nullable restore
-#line 97 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 97 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
  if (events != null && mode == MODE.Add)
 {
 
@@ -420,7 +420,7 @@ else
             __builder.AddAttribute(67, "plachehold", "Name");
             __builder.AddAttribute(68, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 101 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 101 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      name
 
 #line default
@@ -436,7 +436,7 @@ else
             __builder.AddAttribute(73, "plachehold", "Description");
             __builder.AddAttribute(74, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 105 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 105 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                             description
 
 #line default
@@ -452,7 +452,7 @@ else
             __builder.AddAttribute(79, "plachehold", "Date");
             __builder.AddAttribute(80, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 109 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 109 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      date
 
 #line default
@@ -468,7 +468,7 @@ else
             __builder.AddAttribute(85, "plachehold", "Time");
             __builder.AddAttribute(86, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 113 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 113 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      time
 
 #line default
@@ -484,7 +484,7 @@ else
             __builder.AddAttribute(91, "plachehold", "Capacity");
             __builder.AddAttribute(92, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 117 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 117 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                          capacity
 
 #line default
@@ -498,7 +498,7 @@ else
             __builder.OpenElement(95, "button");
             __builder.AddAttribute(96, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 119 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 119 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                        Insert
 
 #line default
@@ -510,7 +510,7 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(99, "\n");
 #nullable restore
-#line 120 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 120 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 }
 
 #line default
@@ -518,7 +518,7 @@ else
 #nullable disable
             __builder.AddMarkupContent(100, "\n");
 #nullable restore
-#line 122 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 122 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
  if (events != null && mode == MODE.EditDelete) // Update & Delete form
 {
 
@@ -531,7 +531,7 @@ else
             __builder.AddAttribute(104, "plachehold", "Name");
             __builder.AddAttribute(105, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 126 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 126 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      name
 
 #line default
@@ -547,7 +547,7 @@ else
             __builder.AddAttribute(110, "plachehold", "Details");
             __builder.AddAttribute(111, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 130 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 130 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                         description
 
 #line default
@@ -557,13 +557,13 @@ else
             __builder.AddAttribute(112, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => description = __value, description));
             __builder.SetUpdatesAttributeName("value");
             __builder.CloseElement();
-            __builder.AddMarkupContent(113, "\n    <br>\n    ");
-            __builder.AddMarkupContent(114, "<label>Date: </label>\n    <br>\n    ");
+            __builder.AddMarkupContent(113, "\r\n    <br>\r\n    ");
+            __builder.AddMarkupContent(114, "<label>Date: </label>\r\n    <br>\r\n    ");
             __builder.OpenElement(115, "input");
             __builder.AddAttribute(116, "plachehold", "Date");
             __builder.AddAttribute(117, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 134 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 134 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      date
 
 #line default
@@ -579,7 +579,7 @@ else
             __builder.AddAttribute(122, "plachehold", "Time");
             __builder.AddAttribute(123, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 138 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 138 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                      time
 
 #line default
@@ -595,7 +595,7 @@ else
             __builder.AddAttribute(128, "plachehold", "Details");
             __builder.AddAttribute(129, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
-#line 142 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 142 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                                         capacity
 
 #line default
@@ -609,7 +609,7 @@ else
             __builder.OpenElement(132, "button");
             __builder.AddAttribute(133, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 144 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 144 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                        Update
 
 #line default
@@ -624,7 +624,7 @@ else
             __builder.OpenElement(138, "button");
             __builder.AddAttribute(139, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
-#line 146 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 146 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
                        Delete
 
 #line default
@@ -636,7 +636,7 @@ else
             __builder.CloseElement();
             __builder.AddMarkupContent(142, "\n");
 #nullable restore
-#line 147 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 147 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
 }
 
 #line default
@@ -645,7 +645,7 @@ else
         }
         #pragma warning restore 1998
 #nullable restore
-#line 149 "C:\Users\jkafk\Downloads\CampTiger-master (8)\CampTiger-master\Pages\EventManagement.razor"
+#line 149 "C:\Users\Alex\Documents\GitHub\CampTiger\Pages\EventManagement.razor"
            
     List<Event> events;
     List<AspNetUsers> users;
