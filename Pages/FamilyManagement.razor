@@ -1,0 +1,189 @@
+﻿@page "/FamilyManagement"
+@using CampTiger.Models
+@using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
+@attribute [Authorize(Roles = "admin")]
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JsRuntime
+@inject AspNetUsersService aspNetUsersService
+@inject FamilyService  familyService
+@inject UserFamilyService userFamilyService
+
+<style>
+
+
+    #searchKey {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 17px;
+        padding: 13px 20px 13px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
+
+<h1> Families</h1>
+<p>Create, Read, Edit, and Delete Family records.</p>
+<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for families by name..." title="Type in a name">
+<br />
+<button name="btnAdd" @onclick="@Add" class="btn btn-success">Add Family</button>
+<br />
+
+
+@if (families == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    
+    <table class='table table-hover' id="list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Leader</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in families)
+            {
+                @foreach (var user in users)
+                {
+                    @if (user.Id == item.LeaderId)
+                    {
+                        <tr @onclick="@(() => Show(item.FamilyId))">
+                            <td>@item.Name</td>
+                            <td>@user.FirstName  @user.LastName</td>
+                            <input type="hidden" plachehold="@familyId" @bind="@item.FamilyId" />
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+}
+@if (mode == MODE.Add)
+{
+    <label>Family Name: </label>
+    <br />
+    <input plachehold="Name" @bind="@name" />
+    <br />
+    <label>Leader: </label>
+    <br />
+    <input plachehold="Leader" @bind="@leader" />
+    <button @onclick="@Insert" class="btn btn-warning">Insert</button>
+}
+
+@if (families != null && mode == MODE.EditDelete) // Update & Delete form
+{
+    <label>Family Name: </label>
+    <br />
+    <input plachehold="Name" @bind="@name" />
+    <br />
+    <button @onclick="@Update" class="btn btn-primary">Update</button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button @onclick="@Delete" class="btn btn-danger">Delete</button>
+}
+
+@functions{
+    List<Event> events;
+    List<AspNetUsers> users;
+    List<Group> groups;
+    List<Family> families;
+    List<UserFamily> records;
+    string userId;
+    string familyId;
+    string leader;
+    string Group;
+    string name;
+    private enum MODE { None, Add, EditDelete };
+    MODE mode = MODE.None;
+    Family activity;
+
+    protected async Task Insert()
+    {
+        familyId = Guid.NewGuid().ToString();
+
+        Family e = new Family()
+        {
+            FamilyId = familyId,
+            LeaderId = leader,
+            Name = name
+        };
+        await familyService.InsertFamilyAsync(e);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected void Add()
+    {
+        //ClearFields();
+        mode = MODE.Add;
+    }
+
+    protected void ClearFields()
+    {
+        familyId = string.Empty;
+        leader = string.Empty;
+        name = string.Empty;
+    }
+
+    protected async Task Update()
+    {
+        Family e = new Family()
+        {
+            FamilyId = familyId,
+            LeaderId = leader,
+            Name = name
+        };
+
+        await familyService.UpdateFamilyAsync(familyId, e);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected async Task Delete()
+    {
+        await familyService.DeleteFamilyAsync(familyId);
+        ClearFields();
+        await load();
+        mode = MODE.None;
+    }
+
+    protected async Task Show(string id)
+    {
+        activity = await familyService.GetFamilyByIdAsync(id);
+        familyId = activity.FamilyId;
+        leader = activity.LeaderId;
+        name = activity.Name;
+        mode = MODE.EditDelete;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        users = await aspNetUsersService.GetAspNetUsersAsync();
+        families = await familyService.GetFamilyAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+    }
+
+    async Task LookUp()
+    {
+        await JsRuntime.InvokeVoidAsync("mySearch");
+    }
+}

@@ -264,50 +264,42 @@ using CampTiger.Shared;
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(112, "\n        ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(113);
-            __builder.AddAttribute(114, "Roles", "admin, groupleader");
-            __builder.AddAttribute(115, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
-                __builder2.AddMarkupContent(116, "\n            ");
-                __builder2.OpenElement(117, "li");
-                __builder2.AddAttribute(118, "class", "nav-item px-3");
-                __builder2.AddMarkupContent(119, "\n                ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(120);
-                __builder2.AddAttribute(121, "class", "nav-link");
-                __builder2.AddAttribute(122, "href", "RequestManagement");
-                __builder2.AddAttribute(123, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddMarkupContent(124, "\n                    <span class=\"oi oi-check\" aria-hidden=\"true\"></span> Event Requests\n                ");
+            __builder.AddMarkupContent(117, "\n        ");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(118);
+            __builder.AddAttribute(119, "Roles", "admin");
+            __builder.AddAttribute(120, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+                __builder2.AddMarkupContent(121, "\r\n            ");
+                __builder2.OpenElement(122, "li");
+                __builder2.AddAttribute(123, "class", "nav-item px-3");
+                __builder2.AddMarkupContent(124, "\r\n                ");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(125);
+                __builder2.AddAttribute(126, "class", "nav-link");
+                __builder2.AddAttribute(127, "href", "EventManagement2");
+                __builder2.AddAttribute(128, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.AddMarkupContent(129, "\r\n                    <span class=\"oi oi-calendar\" aria-hidden=\"true\"></span> Event Management\r\n                ");
                 }
                 ));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(125, "\n            ");
+                __builder2.AddMarkupContent(130, "\r\n            ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(126, "\n        ");
-            }
-            ));
-            __builder.CloseComponent();
-            __builder.AddMarkupContent(127, "\n        ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(128);
-            __builder.AddAttribute(129, "Roles", "admin");
-            __builder.AddAttribute(130, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
-                __builder2.AddMarkupContent(131, "\n            ");
+                __builder2.AddMarkupContent(131, "\r\n            ");
                 __builder2.OpenElement(132, "li");
                 __builder2.AddAttribute(133, "class", "nav-item px-3");
-                __builder2.AddMarkupContent(134, "\n                ");
+                __builder2.AddMarkupContent(134, "\r\n                ");
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(135);
                 __builder2.AddAttribute(136, "class", "nav-link");
                 __builder2.AddAttribute(137, "href", "EventManagement2");
                 __builder2.AddAttribute(138, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddMarkupContent(139, "\n                    <span class=\"oi oi-calendar\" aria-hidden=\"true\"></span> Event Management\n                ");
+                    __builder3.AddMarkupContent(139, "\r\n                    <span class=\"oi oi-pencil\" aria-hidden=\"true\"></span> User Management\r\n                ");
                 }
                 ));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(140, "\n            ");
+                __builder2.AddMarkupContent(140, "\r\n            ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(141, "\n            ");
+                __builder2.AddMarkupContent(141, "\r\n            ");
                 __builder2.OpenElement(142, "li");
                 __builder2.AddAttribute(143, "class", "nav-item px-3");
-                __builder2.AddMarkupContent(144, "\n                ");
+                __builder2.AddMarkupContent(144, "\r\n                ");
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(145);
                 __builder2.AddAttribute(146, "class", "nav-link");
                 __builder2.AddAttribute(147, "href", "UserManagement");
@@ -316,7 +308,7 @@ using CampTiger.Shared;
                 }
                 ));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(150, "\n            ");
+                __builder2.AddMarkupContent(150, "\r\n            ");
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(151, "\n            ");
                 __builder2.OpenElement(152, "li");
@@ -333,6 +325,7 @@ using CampTiger.Shared;
                 __builder2.AddMarkupContent(160, "\n            ");
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(161, "\n        ");
+
             }
             ));
             __builder.CloseComponent();
