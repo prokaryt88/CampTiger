@@ -1,12 +1,18 @@
 ﻿@page "/EventManagement"
 @using CampTiger.Models
 @using CampTiger.Data
+@using Microsoft.AspNetCore.Identity
+
 
 @attribute [Authorize(Roles = "groupleader")]
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject IJSRuntime JsRuntime
 @inject EventService eventService
 @inject AspNetUsersService aspNetUsersService
+@inject GroupService  groupService
 
     <style>
 
@@ -48,6 +54,13 @@ else
             </tr>
         </thead>
         <tbody>
+            @foreach (var sect in groups)
+            {
+                if (sect.Leader == userId)
+                {
+                    Group = sect.GroupId;
+                }
+            }
             @foreach (var item in events)
             {
                 @foreach (var user in users)
@@ -125,6 +138,8 @@ else
 @functions{
     List<Event> events;
     List<AspNetUsers> users;
+    List<Group> groups;
+    string userId;
     string eventId;
     string leader;
     string Group;
@@ -146,7 +161,7 @@ else
             EventId = eventId,
             Group = Group,
             Name = name,
-            Leader = leader,
+            Leader = userId,
             Description = description,
             Date = date,
             Time = time,
@@ -160,7 +175,7 @@ else
 
     protected void Add()
     {
-        ClearFields();
+        //ClearFields();
         mode = MODE.Add;
     }
 
@@ -226,6 +241,11 @@ else
     {
         events = await eventService.GetEventsAsync();
         users = await aspNetUsersService.GetAspNetUsersAsync();
+        groups = await groupService.GetGroupAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
     }
 
     async Task LookUp()
