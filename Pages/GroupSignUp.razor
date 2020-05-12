@@ -74,7 +74,8 @@ else
             GroupId = activity.GroupId,//groupId,
             UserId = userId
         };
-        await userGroupService.InsertUserGroupAsync(g);
+        if(await userGroupService.GetUserGroupByIdAsync(g.GroupId, g.UserId)==null)
+            await userGroupService.InsertUserGroupAsync(g);
         await load();
         mode = MODE.None;
     }

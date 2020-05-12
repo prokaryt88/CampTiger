@@ -19,9 +19,9 @@ namespace CampTiger.Data
             return await _context.UserGroups.ToListAsync();
         }
 
-        public async Task<UserGroups> GetUserGroupByIdAsync(string id)
+        public async Task<UserGroups> GetUserGroupByIdAsync(string id, string id2)
         {
-            return await _context.UserGroups.FindAsync(id);
+            return await _context.UserGroups.FindAsync(id, id2);
         }
 
         public async Task<UserGroups> InsertUserGroupAsync(UserGroups usergroups)
