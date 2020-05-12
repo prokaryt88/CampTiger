@@ -5797,19 +5797,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jkafk\\.nuget\\packages\\": {}
+    "C:\\Users\\Alex\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj",
       "projectName": "CampTiger",
-      "projectPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj",
-      "packagesPath": "C:\\Users\\jkafk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\obj\\",
+      "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\CampTiger.csproj",
+      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\CampTiger\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jkafk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5880,7 +5880,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

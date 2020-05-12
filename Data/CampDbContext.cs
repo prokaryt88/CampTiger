@@ -21,6 +21,9 @@ namespace CampTiger.Data
 
             modelbuilder.Entity<UserEvent>()
                 .HasKey(o => new { o.EventId, o.UserId });
+
+            modelbuilder.Entity<UserFamily>()
+                .HasKey(o => new { o.FamilyId, o.UserId });
         }
 
         public CampDbContext(DbContextOptions<CampDbContext> options) : base(options) { }

@@ -478,3 +478,5 @@ C:\Users\jkafk\Downloads\CampTiger-master (7)\CampTiger-master\obj\Debug\netcore
 C:\Users\jkafk\Downloads\CampTiger-master (7)\CampTiger-master\obj\Debug\netcoreapp3.1\CampTiger.csproj.CopyComplete
 C:\Users\jkafk\Downloads\CampTiger-master (7)\CampTiger-master\obj\Debug\netcoreapp3.1\CampTiger.dll
 C:\Users\jkafk\Downloads\CampTiger-master (7)\CampTiger-master\obj\Debug\netcoreapp3.1\CampTiger.pdb
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\MyFamily.razor.g.cs
+C:\Users\Alex\Documents\GitHub\CampTiger\obj\Debug\netcoreapp3.1\Razor\Pages\MyFamily.razor.g.cs
