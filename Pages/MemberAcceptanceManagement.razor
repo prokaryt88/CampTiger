@@ -57,6 +57,30 @@ else
                                     <td>@sect.Name</td>
                                 </tr>
                             }
+                            else
+                            {
+                                if (item.Leader == null)
+                                {
+                                    <tr @onclick="@(() => Show(item.EventId))">
+                                        <td>@item.Name</td>
+                                        <td>No current leader</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.Date</td>
+                                        <td>@item.Time</td>
+                                        <td>@item.Capacity</td>
+                                        @if (item.Group == sect.GroupId)
+                                        {
+                                            <td>@sect.Name</td>
+                                            continue;
+                                        }
+                                        @if (item.Group != null & groupService.GetGroupByIdAsync(item.Group) == null)
+                                        {
+                                            <td>@item.Group</td>
+                                        }
+
+                                    </tr>
+                                }
+                            }
                         }
                     }
                     if (item.Leader == userId)
