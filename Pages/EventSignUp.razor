@@ -45,22 +45,34 @@ else
                 <th>Date</th>
                 <th>Time</th>
                 <th>Capacity</th>
+                <th>Group</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var sect in events)
+            @foreach (var group in groups)
             {
-                <tr>
-                    <td>@sect.Name</td>
-                    <td>@sect.Description</td>
-                    <td>@sect.Date</td>
-                    <td>@sect.Time</td>
-                    <td>@sect.Capacity</td>
-                    <td>
-                        <button class="btn btn-primary" @onclick="(() => Insert(sect))">Sign-Up</button>
-                    </td>
-                </tr>
+                @foreach (var record in records)
+                {
+                    @foreach (var sect in events)
+                    {
+                        @if (record.GroupId == group.GroupId & record.UserId == userId & sect.Group == group.GroupId)
+                        {
+                            <tr>
+                                <td>@sect.Name</td>
+                                <td>@sect.Description</td>
+                                <td>@sect.Date</td>
+                                <td>@sect.Time</td>
+                                <td>@sect.Capacity</td>
+                                <td>@group.Name</td>
+                                <td>
+                                    <button class="btn btn-primary" @onclick="(() => Insert(sect))">Sign-Up</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
             }
+
         </tbody>
     </table>
 }
@@ -68,6 +80,8 @@ else
 @code {
 
     List<Event> events;
+    List<Group> groups;
+    List<UserGroups> records;
     string eventId;
     string userId;
     private enum MODE { None, Add };
@@ -86,6 +100,8 @@ else
     protected async Task load()
     {
         events = await eventService.GetEventsAsync();
+        groups = await groupService.GetGroupAsync();
+        records = await userGroupService.GetUserGroupAsync();
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
         var currentUser = await UserManager.GetUserAsync(user);

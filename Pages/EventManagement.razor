@@ -3,7 +3,6 @@
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
 
-
 @attribute [Authorize(Roles = "groupleader")]
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -14,18 +13,19 @@
 @inject AspNetUsersService aspNetUsersService
 @inject GroupService  groupService
 
-    <style>
+<style>
 
-        #searchKey {
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            width: 100%;
-            font-size: 17px;
-            padding: 13px 20px 13px 40px;
-            border: 1px solid #ddd;
-            margin-bottom: 12px;
-        }
-    </style>
+
+    #searchKey {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 17px;
+        padding: 13px 20px 13px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
 
 <h1> Events</h1>
 <p>Create, Read, Edit, and Delete Event records.</p>
@@ -34,14 +34,32 @@
 <p>Manage event members:</p>
 <a href="MemberAcceptanceManagement" class="btn btn-info" role="button">Manage Event Members</a>
 <br />
+
+@foreach (var sect in groups)
+{
+    if (sect.Leader == userId)
+    {
+        Group = sect.GroupId;
+        Console.WriteLine(@Group);
+        Console.WriteLine(userId);
+        break;
+    }
+    else
+    {
+        leadsGroup = false;
+    }
+}
 @if (events == null)
 {
     <p><em> Loading...</em></p>
 }
-
+else if (!leadsGroup)
+{
+    <p>You have the permissions of a group leader, but are not actually leading a group! Please message the administrator.</p>
+}
 else
 {
-    <button @onclick="@Add" class="btn btn-success">Add Event</button>
+    <button name="btnAdd" @onclick="@Add" class="btn btn-success">Add Event</button>
     <table class='table table-hover' id="list">
         <thead>
             <tr>
@@ -54,13 +72,6 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var sect in groups)
-            {
-                if (sect.Leader == userId)
-                {
-                    Group = sect.GroupId;
-                }
-            }
             @foreach (var item in events)
             {
                 @foreach (var user in users)
@@ -148,6 +159,7 @@ else
     string date;
     string time;
     string capacity;
+    Boolean leadsGroup = true;
     private enum MODE { None, Add, EditDelete };
     MODE mode = MODE.None;
     Event activity;
@@ -159,9 +171,9 @@ else
         Event e = new Event()
         {
             EventId = eventId,
+            Leader = userId,
             Group = Group,
             Name = name,
-            Leader = userId,
             Description = description,
             Date = date,
             Time = time,
