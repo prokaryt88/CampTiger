@@ -39,14 +39,15 @@
         {
             if (sect.Leader == userId)
             {
-            Group = sect.GroupId;
-            break;
+                Group = sect.GroupId;
+                leadsGroup = true;
+                break;
+            }
+            else
+            {
+                leadsGroup = false;
+            }
         }
-        else
-        {
-            leadsGroup = false;
-        }
-    }
 }
 
 @if (events == null)

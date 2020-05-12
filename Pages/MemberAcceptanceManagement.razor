@@ -14,8 +14,20 @@
 @inject UserEventService userEventService
 @inject GroupService  groupService
 @inject UserGroupService  userGroupService
-<h1>Member Acceptance Management</h1>
-<p>Remove member acceptance in events.</p>
+
+    <style>
+        #searchKey {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 17px;
+            padding: 13px 20px 13px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+    </style>
+
+<h1>Remove Event Participants</h1>
 <input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
 <br />
 @if (events == null)
