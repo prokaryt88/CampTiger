@@ -22,6 +22,7 @@ else
         <thead>
             <tr>
                 <th>Family Name</th>
+                <th>Leader</th>
             </tr>
         </thead>
         <tbody>
@@ -29,12 +30,20 @@ else
             {
                 @if (!hasfamily)
                 {
-                    <tr>
-                        <td>@f.Name</td>
-                        <td>
-                            <button class="btn btn-primary" @onclick="(() => Update(f.FamilyId))">Join</button>
-                        </td>
-                    </tr>
+                    @foreach (var user in users)
+                    {
+                        @if (user.Id == f.LeaderId)
+                        {
+                            <tr>
+                                <td>@f.Name</td>
+                                <td>@user.FirstName  @user.LastName</td>
+                                <td>
+                                <button class="btn btn-primary" @onclick="(() => Update(f.FamilyId))">Join</button>
+                            </td>
+                            </tr>
+                        }
+                    }
+
                 }
                 else
                 {
