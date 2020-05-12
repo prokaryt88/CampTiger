@@ -46,9 +46,9 @@ namespace CampTiger.Data
 
             return usergroups;
         }
-        public async Task<UserGroups> DeleteUserGroupAsync(string id)
+        public async Task<UserGroups> DeleteUserGroupAsync(string id , string id2)
         {
-            var usergroups = await _context.UserGroups.FindAsync(id);
+            var usergroups = await _context.UserGroups.FindAsync(id, id2);
             if (usergroups == null)
                 return null;
             _context.UserGroups.Remove(usergroups);

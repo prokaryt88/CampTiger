@@ -24,7 +24,6 @@ else
         <thead>
             <tr>
                 <th>EMail</th>
-                <th>Permissions</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
@@ -40,7 +39,6 @@ else
                 {
                     <tr @onclick="@(() => Show(item.Id))">
                         <td>@item.Email</td>
-                        <td>@permissions</td>
                         <td>@item.FirstName</td>
                         <td>@item.LastName</td>
                         <td>@item.Address</td>
@@ -89,7 +87,6 @@ else
 
     List<AspNetUsers> Users;
     string userId;
-    string permissions = "";
     string firstName;
     string lastName;
     string address;

@@ -5,6 +5,7 @@
 
 @attribute [Authorize(Roles = "normal")]
 
+@inject IJSRuntime JsRuntime
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -12,7 +13,23 @@
 @inject UserEventService userEventService
 @inject GroupService groupService
 @inject UserGroupService userGroupService
-<h3>Event Sign Up</h3>
+<h1> Event Sign Up</h1>
+<p>Choose your Events</p>
+
+<style>
+    #searchKey {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 17px;
+        padding: 13px 20px 13px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
+
+<input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
+<br />
 
 @if (events == null)
 {
@@ -20,7 +37,7 @@
 }
 else
 {
-    <table class="table table-hover">
+    <table class="table table-hover" id="list">
         <thead>
             <tr>
                 <th>Name</th>
@@ -85,5 +102,10 @@ else
         await userEventService.InsertUserEventAsync(g);
         await load();
         mode = MODE.None;
+    }
+
+    async Task LookUp()
+    {
+        await JsRuntime.InvokeVoidAsync("mySearch");
     }
 }
