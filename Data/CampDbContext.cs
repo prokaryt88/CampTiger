@@ -9,8 +9,11 @@ namespace CampTiger.Data
         public DbSet<AspNetUsers> AspNetUsers { get; set; }
         public DbSet<Group> Group { get; set; }
         public DbSet<Event> Event { get; set; }
-
+        public DbSet<Family> Family { get; set; }
         public DbSet<UserGroups> UserGroups { get; set; }
+        public DbSet<UserEvent> UserEvent { get; set; }
+        public DbSet<UserFamily> UserFamily { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<UserGroups>()
@@ -18,9 +21,11 @@ namespace CampTiger.Data
 
             modelbuilder.Entity<UserEvent>()
                 .HasKey(o => new { o.EventId, o.UserId });
+
+            modelbuilder.Entity<UserFamily>()
+                .HasKey(o => new { o.FamilyId, o.UserId });
         }
 
-        public DbSet<UserEvent> UserEvent { get; set; }
         public CampDbContext(DbContextOptions<CampDbContext> options) : base(options) { }
     }
 }

@@ -59,7 +59,8 @@ namespace CampTiger.Data
             var AspNetUsers = await _context.AspNetUsers.FindAsync(id);
             if (AspNetUsers == null)
                 return null;
-            _context.AspNetUsers.Remove(AspNetUsers);
+            if (AspNetUsers.Email!="admin@gmail.com")
+                _context.AspNetUsers.Remove(AspNetUsers);
             await _context.SaveChangesAsync();
 
             return AspNetUsers;

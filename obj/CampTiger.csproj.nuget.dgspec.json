@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj": {}
+    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (8)\\CampTiger-master\\CampTiger.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj": {
+    "C:\\Users\\jkafk\\Downloads\\CampTiger-master (8)\\CampTiger-master\\CampTiger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj",
+        "projectUniqueName": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (8)\\CampTiger-master\\CampTiger.csproj",
         "projectName": "CampTiger",
-        "projectPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\CampTiger.csproj",
+        "projectPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (8)\\CampTiger-master\\CampTiger.csproj",
         "packagesPath": "C:\\Users\\jkafk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (7)\\CampTiger-master\\obj\\",
+        "outputPath": "C:\\Users\\jkafk\\Downloads\\CampTiger-master (8)\\CampTiger-master\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jkafk\\AppData\\Roaming\\NuGet\\NuGet.Config",
