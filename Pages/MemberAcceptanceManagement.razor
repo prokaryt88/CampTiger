@@ -1,4 +1,4 @@
-@page "/MemberAcceptanceManagement"
+﻿@page "/MemberAcceptanceManagement"
 @using CampTiger.Models
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
@@ -57,6 +57,30 @@ else
                                     <td>@sect.Name</td>
                                 </tr>
                             }
+                            else
+                            {
+                                if (item.Leader == null)
+                                {
+                                    <tr @onclick="@(() => Show(item.EventId))">
+                                        <td>@item.Name</td>
+                                        <td>No current leader</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.Date</td>
+                                        <td>@item.Time</td>
+                                        <td>@item.Capacity</td>
+                                        @if (item.Group == sect.GroupId)
+                                        {
+                                            <td>@sect.Name</td>
+                                            continue;
+                                        }
+                                        @if (item.Group != null & groupService.GetGroupByIdAsync(item.Group) == null)
+                                        {
+                                            <td>@item.Group</td>
+                                        }
+
+                                    </tr>
+                                }
+                            }
                         }
                     }
                     if (item.Leader == userId)
@@ -113,11 +137,34 @@ else
                                 <input type="hidden" plachehold="EventID" @bind="@item.EventId" />;
                             </tr>
                         }
+                        else
+                        {
+                            if (item.Leader == null)
+                            {
+                                <tr @onclick="@(() => Show(item.EventId))">
+                                    <td>@item.Name</td>
+                                    <td>No current leader</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Date</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.Capacity</td>
+                                    @foreach (var sect in groups)
+                                    {
+                                        @if (item.Group == sect.GroupId)
+                                        {
+                                            <td>@sect.Name</td>
+                                            continue;
+                                        }
+                                        @if (item.Group != null & groupService.GetGroupByIdAsync(item.Group) == null)
+                                        {
+                                            <td>@item.Group</td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        }
                     }
-                    @if (item.Leader != null)
-                    {
-                        <tr>Users attending @item.Name on @item.Date</tr>
-                    }
+                    <tr>Users attending @item.Name on @item.Date</tr>
                     @foreach (var user in users)
                     {
                         <tr>

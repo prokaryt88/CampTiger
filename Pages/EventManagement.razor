@@ -2,10 +2,6 @@
 @using CampTiger.Models
 @using CampTiger.Data
 @using Microsoft.AspNetCore.Identity
-<<<<<<< HEAD
-=======
-
->>>>>>> 5fae88d0e84fc91ea4adcc6c2d1a133bd9236231
 
 @attribute [Authorize(Roles = "groupleader")]
 
@@ -76,13 +72,6 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var sect in groups)
-            {
-                if (sect.Leader == userId)
-                {
-                    Group = sect.GroupId;
-                }
-            }
             @foreach (var item in events)
             {
                 @foreach (var user in users)
@@ -185,10 +174,6 @@ else
             Leader = userId,
             Group = Group,
             Name = name,
-<<<<<<< HEAD
-=======
-            Leader = userId,
->>>>>>> 5fae88d0e84fc91ea4adcc6c2d1a133bd9236231
             Description = description,
             Date = date,
             Time = time,
