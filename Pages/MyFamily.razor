@@ -4,8 +4,97 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 
-<h3>MyFamily</h3>
+@attribute [Authorize(Roles = "normal")]
+
+@inject IJSRuntime JsRuntime
+@inject UserManager<IdentityUser> _UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AspNetUsersService userService
+@inject FamilyService familyService
+@inject UserFamilyService userFamilyService
+
+<h3>My Family</h3>
+
+<p>Your Family Member's Accounts</p>
+
+@if (Users == null)
+{
+    <p><em> Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover' id="list">
+        <thead>
+            <tr>
+                <th>EMail</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Users)
+            {
+                @foreach (var uf in UserFamily)
+                {
+                    @if (uf.FamilyId == familyId)
+                    {
+                        <tr>
+                                <td>@item.Email</td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Address</td>
+                                <td>@item.State</td>
+                                <td>@item.Zip</td>
+                                <td>@item.Phone</td>
+                        </tr>
+                    }
+                }
+
+            }
+        </tbody>
+    </table>
+}
 
 @code {
 
+    List<AspNetUsers> Users;
+    List<Family> Familys;
+    List<UserFamily> UserFamily;
+    string userId;
+    string firstName;
+    string lastName;
+    string address;
+    string state;
+    string zip;
+    string phone;
+    string familyId;
+    AspNetUsers User;
+    bool ShowPopup = false;
+    IdentityUser objUser = new IdentityUser();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        Users = await userService.GetAspNetUsersAsync();
+        Familys = await familyService.GetFamilyAsync();
+        UserFamily = await userFamilyService.GetUserFamilyAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await _UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
+
+        foreach (var f in UserFamily)
+        {
+            if (f.UserId == userId)
+                familyId = f.FamilyId;
+        }
+    }
 }

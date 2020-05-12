@@ -39,7 +39,7 @@ namespace CampTiger.Data
                 return null;
 
             Family.FamilyId = f.FamilyId;
-            Family.Leader = f.Leader;
+            Family.LeaderId = f.LeaderId;
             Family.Name = f.Name;
 
             _context.Family.Update(Family);

@@ -9,7 +9,7 @@ namespace CampTiger.Models
     public class Family
     {
         public string FamilyId { get; set; }
-        public string Leader { get; set; }
+        public string LeaderId { get; set; }
         public string Name { get; set; }
     }
 }

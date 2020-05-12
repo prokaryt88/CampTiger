@@ -48,6 +48,8 @@ namespace CampTiger
             services.AddScoped<EventService>();
             services.AddScoped<UserEventService>();
             services.AddScoped<UserGroupService>();
+            services.AddScoped<UserFamilyService>();
+            services.AddScoped<FamilyService>();
             services.AddHttpContextAccessor();
         }
 
