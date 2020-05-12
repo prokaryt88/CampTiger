@@ -11,6 +11,7 @@
 @inject AspNetUsersService userService
 @inject EventService eventService
 @inject UserEventService userEventService
+@inject GroupService  groupService
 
 <h3>Request Management</h3>
 <p>Accept or deny member event join requests.</p>
@@ -31,38 +32,74 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var user in users)
-            {
-                <tr>@user.FirstName  @user.LastName</tr>
-                @foreach (var activity in records)
+            <AuthorizeView Roles="groupleader">
+                @foreach (var user in users)
                 {
-                    <tr>
-                        @if (activity.UserId == user.Id & activity.Approved == false)
-                        {
-                            @foreach (var item in events)
+                    <tr>@user.FirstName  @user.LastName</tr>
+                    @foreach (var activity in records)
+                    {
+                        <tr>
+                            @foreach (var group in groups)
                             {
-                                if (activity.EventId == item.EventId)
+                                @if (activity.UserId == user.Id & activity.Approved == false & group.Leader == userId)
                                 {
-                                    <td>Event and Details:</td>
-                                    <td>@item.Name</td>
-                                    <td>Date: @item.Date</td>
-                                    <td>Time: @item.Time</td>
-                                    <td>
-                                        <button class="btn btn-primary" @onclick="(() => AcceptRequest(user, item))">
-                                            Accept
-                                        </button>
-                                    </td>
-                                    <td> &nbsp;</td>
+                                    @foreach (var item in events)
+                                    {
+                                        if (activity.EventId == item.EventId & item.Group == group.GroupId)
+                                        {
+                                            <td>Event and Details:</td>
+                                            <td>@item.Name</td>
+                                            <td>Date: @item.Date</td>
+                                            <td>Time: @item.Time</td>
+                                            <td>
+                                                <button class="btn btn-primary" @onclick="(() => AcceptRequest(user, item))">
+                                                    Accept
+                                                </button>
+                                            </td>
+                                            <td> &nbsp;</td>
+                                        }
+                                    }
+
                                 }
                             }
 
-                        }
 
-                    </tr>
+                        </tr>
+                    }
                 }
+            </AuthorizeView>
+            <AuthorizeView Roles="admin">
+                @foreach (var user in users)
+                {
+                    <tr>@user.FirstName  @user.LastName</tr>
+                    @foreach (var activity in records)
+                    {
+                        <tr>
+                            @if (activity.UserId == user.Id & activity.Approved == false)
+                            {
+                                @foreach (var item in events)
+                                {
+                                    if (activity.EventId == item.EventId)
+                                    {
+                                        <td>Event and Details:</td>
+                                        <td>@item.Name</td>
+                                        <td>Date: @item.Date</td>
+                                        <td>Time: @item.Time</td>
+                                        <td>
+                                            <button class="btn btn-primary" @onclick="(() => AcceptRequest(user, item))">
+                                                Accept
+                                            </button>
+                                        </td>
+                                        <td> &nbsp;</td>
+                                    }
+                                }
 
+                            }
 
-            }
+                        </tr>
+                    }
+                }
+            </AuthorizeView>
         </tbody>
     </table>
 }
@@ -71,6 +108,7 @@ else
     List<AspNetUsers> users;
     List<Event> events;
     List<UserEvent> records;
+    List<Group> groups;
     String userId;
 
     protected override async Task OnInitializedAsync()
@@ -83,6 +121,11 @@ else
         users = await userService.GetAspNetUsersAsync();
         events = await eventService.GetEventsAsync();
         records = await userEventService.GetUserEventAsync();
+        groups = await groupService.GetGroupAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var currentUser = await UserManager.GetUserAsync(user);
+        userId = currentUser.Id;
     }
 
     protected async Task AcceptRequest(AspNetUsers user, Event activity)

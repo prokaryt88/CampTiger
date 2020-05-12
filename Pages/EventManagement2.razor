@@ -8,21 +8,25 @@
 @inject EventService eventService
 @inject AspNetUsersService aspNetUsersService
 
-<style>
-    #searchKey {
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        width: 100%;
-        font-size: 17px;
-        padding: 13px 20px 13px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-    }
-</style>
+    <style>
+
+        #searchKey {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 17px;
+            padding: 13px 20px 13px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+    </style>
 
 <h1> Events</h1>
 <p>Read, Edit, and Delete Event records.</p>
 <input type="text" id="searchKey" @onkeyup="@LookUp" placeholder="Search for events by name..." title="Type in a name">
+<br />
+<p>Manage event members:</p>
+<a href="MemberAcceptanceManagement" class="btn btn-info" role="button">Manage Event Members</a>
 <br />
 @if (events == null)
 {
@@ -40,7 +44,6 @@ else
                 <th>Date</th>
                 <th>Time</th>
                 <th>Capacity</th>
-                <th>Group</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +60,7 @@ else
                             <td>@item.Date</td>
                             <td>@item.Time</td>
                             <td>@item.Capacity</td>
-                            <td>@item.Group</td>
+                            <input type="hidden" plachehold="@eventId" @bind="@item.EventId" />
                         </tr>
                     }
                 }
@@ -72,6 +75,10 @@ else
     <label>EventName: </label>
     <br />
     <input plachehold="Name" @bind="@name" />
+    <br />
+    <label>Leader: </label>
+    <br />
+    <input plachehold="Leader" @bind="@leader" />
     <br />
     <label>Description: </label>
     <br />
@@ -88,8 +95,6 @@ else
     <label>Capacity: </label>
     <br />
     <input plachehold="Details" @bind="@capacity" />
-    <br />
-    <input plachehold="Group ID" @bind="@Group" />
     <br />
     <button @onclick="@Update" class="btn btn-primary">Update</button>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -126,6 +131,8 @@ else
     {
         Event ev = new Event()
         {
+            EventId = eventId,
+            Leader = leader,
             Group = Group,
             Name = name,
             Description = description,
