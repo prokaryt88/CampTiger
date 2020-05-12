@@ -19,9 +19,9 @@ namespace CampTiger.Data
             return await _context.UserEvent.ToListAsync();
         }
 
-        public async Task<UserEvent> GetUserEventByIdAsync(string id)
+        public async Task<UserEvent> GetUserEventByIdAsync(string id, string id2)
         {
-            return await _context.UserEvent.FindAsync(id);
+            return await _context.UserEvent.FindAsync(id, id2);
         }
 
         public async Task<UserEvent> InsertUserEventAsync(UserEvent userevent)

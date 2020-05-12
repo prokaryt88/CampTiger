@@ -115,7 +115,9 @@ else
             EventId = activity.EventId,
             UserId = userId
         };
-        await userEventService.InsertUserEventAsync(g);
+        
+        if(await userEventService.GetUserEventByIdAsync(g.EventId, g.UserId)==null)
+            await userEventService.InsertUserEventAsync(g);
         await load();
         mode = MODE.None;
     }
