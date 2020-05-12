@@ -177,7 +177,7 @@ else
 
     string CurrentUserRole { get; set; } = "User";
 
-    List<string> Options = new List<string>() { "User", "Group Leader", "Admin" };
+    List<string> Options = new List<string>() { "User", "Group Leader"};
     string strError = "";
 
     protected override async Task OnInitializedAsync()
@@ -246,7 +246,6 @@ else
 
         // clears out all previous roles before adding in new one.
         await _UserManager.RemoveFromRoleAsync(change, "User");
-        await _UserManager.RemoveFromRoleAsync(change, "Admin");
         await _UserManager.RemoveFromRoleAsync(change, "Group Leader");
         // add selected role for user account
         await _UserManager.AddToRoleAsync(change, CurrentUserRole);
